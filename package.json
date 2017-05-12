@@ -1,0 +1,23 @@
+{
+  "name": "shoppinglista-grupp1",
+  "version": "1.0.0",
+  "description": "Grupparbete shoppinglista",
+  "main": "app.js",
+  "dependencies": {
+    "cucumber": "^2.0.0-rc.9"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marialjungberg/shoppinglista-grupp1.git"
+  },
+  "author": "Maria",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/marialjungberg/shoppinglista-grupp1/issues"
+  },
+  "homepage": "https://github.com/marialjungberg/shoppinglista-grupp1#readme"
+}
