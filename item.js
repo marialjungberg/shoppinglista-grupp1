@@ -19,5 +19,12 @@ module.exports = class Item {
 		return this._category;
 	}
 
+	set name(){
+		//this._name;
+	}
+
+	get name(){
+		//return this._name;
+	}
 
 }
