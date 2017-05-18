@@ -54,4 +54,5 @@ module.exports = class ShoppingList {
 		}
 
 	}
+
 }

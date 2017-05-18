@@ -4,7 +4,7 @@
   "description": "Grupparbete shoppinglista",
   "main": "app.js",
   "dependencies": {
-    "cucumber": "^2.1.0"
+    "cucumber": "^2.0.0-rc.9"
   },
   "devDependencies": {},
   "scripts": {
