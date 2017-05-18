@@ -26,6 +26,16 @@ module.exports = class ShoppingList {
 		this.items.push(item);
 	}
 
+	getBoughtItems(){
+		let arr = [];
+		for(let item of this.items){
+			if(item.bought){
+				arr.push(item);
+			}
+		}
+		return arr;
+	}
+
 	// remove an item from the items array by name
 	removeItem(name) {
 
