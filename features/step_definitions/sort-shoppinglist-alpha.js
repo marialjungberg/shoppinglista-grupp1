@@ -41,7 +41,7 @@ defineSupportCode(function({Given, When, Then}) {
 		// Test if each item in the array is greater than previous item
 		let rightOrder = true;
 
-		for (let i = 0;i < sortedShoppingList.length) {
+		for (let i = 0;i < sortedShoppingList.length;i++) {
 			if (sortedShoppingList[i].name <= sortedShoppingList[i + 1].name) {
 				rightOrder = false;
 			}
