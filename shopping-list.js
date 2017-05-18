@@ -44,7 +44,14 @@ module.exports = class ShoppingList {
 		}
 	}
 
-	getSortAlphabetically() {
+	getSortAlphabetically() {}
+
+	markItemBought(name){
+		for(let i = 0; i < this.items.length; i++){
+			if(this.items[i].name === name){
+				this.items[i].bought = !this.items[i].bought;
+			}
+		}
 
 	}
 }

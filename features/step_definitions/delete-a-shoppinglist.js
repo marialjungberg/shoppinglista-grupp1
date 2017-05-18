@@ -6,7 +6,7 @@ let ShoppingListCollection = require('../../shopping-list-collection.js');
 
 defineSupportCode(function({Given, When, Then}) {
 
-	let shoppingListCollection = new ShoppingListCollection();
+	let shoppingListCollection = new ShoppingListCollection( );
 	let shoppingList1 = new ShoppingList("Test01");
 	shoppingListCollection.addShoppingList(shoppingList1);
 
