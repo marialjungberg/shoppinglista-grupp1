@@ -8,7 +8,7 @@ let ShoppingList = require('../../shopping-list.js');
 defineSupportCode(function({Given, When, Then}) {
 
 	let item1 = new Item("Mjölk", 2, "Godis");
-	let item2 = new Item();
+	let item2 = new Item("Ipad", 1, "godis");
 
     Given('that I have an item', function (callback) {
         assert(item2 != null, "I don't have an item!");
