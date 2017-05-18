@@ -12,4 +12,12 @@ module.exports = class ShoppingListCollection {
 
 		this.shoppingLists.push(shoppingList);
 	}
+
+	deleteShoppingList(name) {
+		for(let i = 0; i < this.shoppingLists.length; i++){
+			if(this.shoppingLists[i].name === name){
+				this.shoppingLists.splice(i, 1);
+			}
+		}
+	}
 }
