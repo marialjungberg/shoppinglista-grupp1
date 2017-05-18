@@ -19,12 +19,12 @@ module.exports = class Item {
 		return this._category;
 	}
 
-	set name(){
-		//this._name;
+	set name(name){
+		this._name = name;
 	}
 
 	get name(){
-		//return this._name;
+		return this._name;
 	}
 
 }
