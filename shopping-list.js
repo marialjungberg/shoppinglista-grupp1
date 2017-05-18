@@ -43,4 +43,8 @@ module.exports = class ShoppingList {
 			this.items.splice(itemIndex,1);
 		}
 	}
+
+	getSortAlphabetically() {
+
+	}
 }
