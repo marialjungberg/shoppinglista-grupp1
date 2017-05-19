@@ -36,7 +36,7 @@ defineSupportCode(function({Given, When, Then}) {
     });
 
 	Then('the item should have the new category.', function (callback) {
-        assert(item1.category === "Mejeri", "The item don't have the new category");
+        assert(item1.category === "Mejeri", "The item doesn't have the new category");
         callback();
     });
 });
