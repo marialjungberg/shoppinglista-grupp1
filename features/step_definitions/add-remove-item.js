@@ -7,23 +7,19 @@ let ShoppingList = require('../../shopping-list.js');
 
 defineSupportCode(function({Given, When, Then}) {
 
-	let shoppingList1;
-	let shoppingList2;
-	let item01;
-	let item02;
-	let item03;
+	let shoppingList1 = new ShoppingList("Test1");
+	let item01 = new Item("Item01",1,"A");
+	shoppingList1.addItem(item01);
+	let item02 = new Item("Item02",2,"B");
+	shoppingList1.addItem(item02);
+	let item03 = new Item("Item03",3,"C");
+	shoppingList1.addItem(item03);
 	let item04;
 	let lengthOfItems;
+		console.warn(shoppingList1);
 
 	Given('that i want to remove an item from my list', function (callback) {
 
-		shoppingList1 = new ShoppingList("Test1");
-		item01 = new Item("Item01",1,"A");
-		shoppingList1.addItem(item01);
-		item02 = new Item("Item02",2,"B");
-		shoppingList1.addItem(item02);
-		item03 = new Item("Item03",3,"C");
-		shoppingList1.addItem(item03);
 		lengthOfItems = shoppingList1.items.length;
 
 		callback();
@@ -47,48 +43,52 @@ defineSupportCode(function({Given, When, Then}) {
 		// Test if the shopping list still contains an item with that name
 		let stillLeft = false;
 		for (let item of shoppingList1.items) {
-			if (item.name = "Item01") {
+			if (item.name === "Item01") {
 				stillLeft = true;
 			}
 		}
-		assert(stillLeft,"The item is still in the shopping list.");
+		assert(!stillLeft,"The item is still in the shopping list.");
 
 		callback();
 	});
 
-	Given('that I want to add an item to my shopping list', function (callback) {
+	Given('that I want to add an item to my list that has the same name as an item in the list', function (callback) {
 		
-		shoppingList2 = new ShoppingList("Test2");
-		item04 = new Item("Item04",4,"Test");
+		
+		item04 = shoppingList1.items[0];
 
 		callback();
 	});
 
-	When('I add an item', function (callback) {
+	Given('that I want to add an item to my list that doesn\'t exist in the list', function (callback) {
 
-		shoppingList2.addItem(item04);
+        item04 = new Item("New item",1,"Cat");
+        callback();
+    });
 
-		callback();
-	});
-
-	Then('the item will be found in the shopping list', function (callback) {
-
-		// Test if one object has been added to the shopping list
-		assert(shoppingList2.items.length === 1,"More or less than one item has been added to the shopping list.");
-
-		// Test if it is an Item object
-		assert(shoppingList2.items[0] instanceof Item,"Object is not of type Item.");
-
-		// Test if the name is correct
-		assert(shoppingList2.items[0].name === "Item04","Item has wrong name.");
-
-		// Test if the quantity is correct
-		assert(shoppingList2.items[0].quantity === 4,"Item has wrong quantity.");
-
-		// Test if the category is correct
-		assert(shoppingList2.items[0].category === "Test","Item has wrong category.");
+	When('I add the item', function (callback) {
+		try{
+			shoppingList1.addItem(item04);
+		}catch(err){
+		}
 
 		callback();
 	});
 
+	Then('the item will be added to the list', function (callback) {
+		for(let tempItem of shoppingList1.items){
+			if(tempItem.name === "New item"){
+				callback();
+			}
+		}
+		callback(new Error("The item has not been added"));
+	});
+
+	Then('the item will not be added to the list', function (callback) {
+        
+		if(shoppingList1.items.length === 3){
+			callback(new Error("The item has been added"));
+		}
+        callback();
+    });
 });

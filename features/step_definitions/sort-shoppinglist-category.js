@@ -11,17 +11,17 @@ defineSupportCode(function({Given, When, Then}) {
 	let sortedShoppingList;
 
 
-	Given('that I have a grocery list with more than one item that has not been sorted alphabetically', function (callback) {
+	Given('that I have an unsorted grocery list with one or more items', function (callback) {
 
 		shoppingList = new ShoppingList("Test1");
 	
 		for (let i = 5;i < 21;i += 5) {
 			for (let j = i; j > i - 5;j--) {
 				if (j < 10){
-					shoppingList.addItem(new Item("Item0" + j,1,"Items"));
+					shoppingList.addItem(new Item("Item0" + j,1,"Category0" + j));
 				}
 				else {
-					shoppingList.addItem(new Item("Item" + j,1,"Items"));
+					shoppingList.addItem(new Item("Item" + j,1,"Category" + j));
 				}
 			}
 		}
@@ -29,14 +29,14 @@ defineSupportCode(function({Given, When, Then}) {
 		callback();
 	});
 
-	When('I sort them alphabetically', function (callback) {
+	When('I try to sort the list by category', function (callback) {
 
-		sortedShoppingList = shoppingList.getSortAlphabetically();
+		sortedShoppingList = shoppingList.getSortCategory();
 
 		callback();
 	});
 
-	Then('the list should be sorted alphabetically ascending', function (callback) {
+	Then('the list should be sorted by category ascending', function (callback) {
 
 		// Test if the returned array is an array
 		assert(Array.isArray(sortedShoppingList),"The returned object is not an array");

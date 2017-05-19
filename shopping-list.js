@@ -21,9 +21,13 @@ module.exports = class ShoppingList {
 	}
 
 	// add an item to the items array
-	addItem(item) {
-
-		this.items.push(item);
+	addItem(tmpItem) {
+		for(let item of this.items){
+			if(item.name === tmpItem.name){
+				throw new Error("The new Item has the same name as the one of the items in the list!");
+			}
+		}
+		this.items.push(tmpItem);
 	}
 
 	getBoughtItems(){
@@ -65,7 +69,7 @@ module.exports = class ShoppingList {
 	}
 
 	getSortAlphabetically() {
-		let sortedArray = [];
+		let sortedArray;
 		sortedArray = this.items.slice();
 
 		sortedArray.sort(
@@ -87,13 +91,35 @@ module.exports = class ShoppingList {
 		return sortedArray;
 	}
 
+	getSortCategory() {
+		let sortedArray = [];
+
+		sortedArray = this.items.slice();
+		sortedArray.sort(
+			function(a, b) {
+				var categoryA = a.category.toUpperCase(); // ignore upper and lowercase
+				var categoryB = b.category.toUpperCase(); // ignore upper and lowercase
+				if (categoryA < categoryB) {
+					return -1;
+				}
+				if (categoryA > categoryB) {
+					return 1;
+				}
+
+				// names must be equal
+				return 0;
+			}
+		);
+
+		return sortedArray;
+	}
+
 	markItemBought(name){
 		for(let i = 0; i < this.items.length; i++){
 			if(this.items[i].name === name){
 				this.items[i].bought = !this.items[i].bought;
 			}
 		}
-
 	}
 
 }
