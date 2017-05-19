@@ -21,9 +21,13 @@ module.exports = class ShoppingList {
 	}
 
 	// add an item to the items array
-	addItem(item) {
-
-		this.items.push(item);
+	addItem(tmpItem) {
+		for(let item of this.items){
+			if(item.name === tmpItem.name){
+				throw new Error("The new Item has the same name as the one of the items in the list!");
+			}
+		}
+		this.items.push(tmpItem);
 	}
 
 	getBoughtItems(){
