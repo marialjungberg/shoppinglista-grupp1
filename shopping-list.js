@@ -26,6 +26,26 @@ module.exports = class ShoppingList {
 		this.items.push(item);
 	}
 
+	getBoughtItems(){
+		let arr = [];
+		for(let item of this.items){
+			if(item.bought){
+				arr.push(item);
+			}
+		}
+		return arr;
+	}
+
+	getNotBoughtItems(){
+		let arr = [];
+		for(let item of this.items){
+			if(!item.bought){
+				arr.push(item);
+			}
+		}
+		return arr;
+	}
+
 	// remove an item from the items array by name
 	removeItem(name) {
 
@@ -44,7 +64,28 @@ module.exports = class ShoppingList {
 		}
 	}
 
-	getSortAlphabetically() {}
+	getSortAlphabetically() {
+		let sortedArray = [];
+		sortedArray = this.items.slice();
+
+		sortedArray.sort(
+			function(a, b) {
+				var nameA = a.name.toUpperCase(); // ignore upper and lowercase
+				var nameB = b.name.toUpperCase(); // ignore upper and lowercase
+				if (nameA < nameB) {
+					return -1;
+				}
+				if (nameA > nameB) {
+					return 1;
+				}
+
+				// names must be equal
+				return 0;
+			}
+		);
+
+		return sortedArray;
+	}
 
 	markItemBought(name){
 		for(let i = 0; i < this.items.length; i++){
