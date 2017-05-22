@@ -11,7 +11,7 @@ defineSupportCode(function({Given, When, Then}) {
 	let m_firstquan = 1;
 	let m_secondquan = 5;
 
-	Given("that I have an item", function(callback) {
+	Given("that I have an Item", function(callback) {
 		m_item = new Item("Item",m_firstquan,"A");
 
 		assert(m_item != NULL, "Item could not be created.");
