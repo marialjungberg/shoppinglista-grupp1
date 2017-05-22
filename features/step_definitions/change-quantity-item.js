@@ -22,7 +22,7 @@ defineSupportCode(function({Given, When, Then}) {
 	});
 
 	When("I try to change the quantity of the item", function(callback) {
-		m_item.set quantity(m_secondquan);
+		m_item.quantity = m_secondquan;
 
 		callback();
 	});
