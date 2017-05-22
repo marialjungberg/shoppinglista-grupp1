@@ -9,6 +9,16 @@ module.exports = class Item {
 		this.bought = false;
 	}
 
+	set quantity(val){
+		if (val < 0) {
+			this._quantity = val;
+		}
+	}
+
+	get quantity(){
+		return this._quantity;
+	}
+
 	set category(val){
 		if(typeof val != "string" || val.length < 0){
 			throw(new Error("Bad name!"));
@@ -37,6 +47,10 @@ module.exports = class Item {
 
 	get name(){
 		return this._name;
+	}
+
+	function addQuantity() {
+		this.quantity++;
 	}
 
 }

@@ -1,7 +1,6 @@
 let assert = require("assert");
 let {defineSupportCode} = require('cucumber');
 let Item = require('../../item.js');
-// let ShoppingList = require('../../shopping-list.js');
 
 // Code that tests ...
 
@@ -23,7 +22,7 @@ defineSupportCode(function({Given, When, Then}) {
 	});
 
 	When("I try to change the quantity of the item", function(callback) {
-		m_item.Change_Quantity(m_secondquan);
+		m_item.set quantity(m_secondquan);
 
 		callback();
 	});
@@ -31,6 +30,7 @@ defineSupportCode(function({Given, When, Then}) {
 	Then("the item should change in quantity to reflect that input.", function(callback) {
 		assert(m_item.quantity != m_firstquan, "Item quantity unchanged.");
 		assert(m_item.quantity === m_secondquan, "Item quantity couldn't be changed correctly.");
+		assert(m_item.quantity)
 
 		callback();
 	});
@@ -42,7 +42,7 @@ defineSupportCode(function({Given, When, Then}) {
 	});
 
 	When("I try to increase the quantity of the item", function(callback) {
-		m_item.quanadd();
+		m_item.quantity += 1;
 
 		callback();
 	});
@@ -53,7 +53,7 @@ defineSupportCode(function({Given, When, Then}) {
 	})
 
 	When("I try to decrease the quantity of the item", function(callback) {
-		m_item.quansub();
+		m_item.quantity -= 1;
 
 		callback();
 	});
