@@ -49,7 +49,7 @@ module.exports = class Item {
 		return this._name;
 	}
 
-	function addQuantity() {
+	addQuantity() {
 		this.quantity++;
 	}
 
