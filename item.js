@@ -10,7 +10,7 @@ module.exports = class Item {
 	}
 
 	set quantity(val){
-		if (this._quantity + val >= 0) {
+		if (val >= 0) {
 			this._quantity = val;
 		}
 		else {

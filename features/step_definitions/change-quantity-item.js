@@ -66,7 +66,12 @@ defineSupportCode(function({Given, When, Then}) {
 
 	Then("the items quantity should decrease by 5", function(callback) {
 		assert(m_item.quantity != m_startquan, "Item quantity unchanged.");
-		assert(m_item.quantity == (m_startquan - 5), "Item quantity incorrect.");
+		if (m_startquan < 5) {
+			assert(m_item.quantity == 0, "Item quantity incorrect.")
+		}
+		else {
+			assert(m_item.quantity == (m_startquan - 5), "Item quantity incorrect.");
+		}
 
 		callback();
 	});
