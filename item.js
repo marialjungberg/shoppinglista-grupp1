@@ -4,14 +4,17 @@ module.exports = class Item {
 
 	constructor(name, quantity, category) {
 		this.name = name;
-		this.quantity = quantity;
+		this._quantity = quantity;
 		this.category = category;
 		this.bought = false;
 	}
 
 	set quantity(val){
-		if (val < 0) {
+		if (this._quantity + val >= 0) {
 			this._quantity = val;
+		}
+		else {
+			this._quantity = 0;
 		}
 	}
 

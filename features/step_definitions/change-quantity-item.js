@@ -8,59 +8,67 @@ defineSupportCode(function({Given, When, Then}) {
 
 	let m_item;
 
-	let m_firstquan = 1;
-	let m_secondquan = 5;
+	let m_startquan = 0;
+	let m_quanset = 0;
 
-	Given("that I have an Item", function(callback) {
-		m_item = new Item("Item",m_firstquan,"A");
+	Given("that I have an Item with a starting quantity of 3", function(callback) {
+		m_item = new Item("Item", 3, "A");
 
-		assert(m_item != NULL, "Item could not be created.");
+		m_startquan = 3;
 
-		assert(m_item.quantity != m_firstquan, "Item has the wrong starting quantity.");
+		assert(m_item != null, "Item could not be created.");
+
+		assert(m_item.quantity == 3, "Item has the wrong starting quantity. It's supposed to be " + 3 + " but instead it's " + m_item.quantity + ".");
 
 		callback();
 	});
 
-	When("I try to change the quantity of the item", function(callback) {
-		m_item.quantity = m_secondquan;
+	When("I try to change the quantity of the item to 5", function(callback) {
+		m_item.quantity = 5;
+		m_quanset = 5;
 
 		callback();
 	});
 
 	Then("the item should change in quantity to reflect that input.", function(callback) {
-		assert(m_item.quantity != m_firstquan, "Item quantity unchanged.");
-		assert(m_item.quantity === m_secondquan, "Item quantity couldn't be changed correctly.");
-		assert(m_item.quantity)
+		assert(m_item.quantity != m_startquan, "Item quantity unchanged.");
+		assert(m_item.quantity == m_quanset, "Item quantity is " + m_item.quantity + " it's supposed to be " + m_quanset + ".");
 
 		callback();
 	});
 
 	Then("the item's quantity should not be below 0.", function(callback) {
-		assert(m_item.quantity < 0, "Item quantity below 0.");
+		assert(m_item.quantity >= 0, "Item quantity below 0. " + m_item.quantity + ".");
 
 		callback();
 	});
 
-	When("I try to increase the quantity of the item", function(callback) {
-		m_item.quantity += 1;
+	When("I try to increase the quantity of the item by 5", function(callback) {
+		m_item.quantity += 5;
+
+		m_quanset = 5;
 
 		callback();
 	});
 
-	Then("the items quantity should increase by 1", function(callback) {
-		assert(m_item.quantity != m_firstquan, "Item quantity unchanged.");
-		assert(m_item.quantity == (m_firstquan + 1), "Item quantity incorrect.");
+	Then("the items quantity should increase by 5", function(callback) {
+		assert(m_item.quantity != m_startquan, "Item quantity unchanged.");
+		assert(m_item.quantity == (m_startquan + 5), "Item quantity incorrect.");
+
+		callback();
 	})
 
-	When("I try to decrease the quantity of the item", function(callback) {
-		m_item.quantity -= 1;
+	When("I try to decrease the quantity of the item by 5", function(callback) {
+		m_item.quantity -= 5;
 
 		callback();
 	});
 
-	Then("the items quantity should decrease by 1", function(callback) {
-		assert(m_item.quantity != m_firstquan, "Item quantity unchanged.");
-		assert(m_item.quantity == (m_firstquan + 1), "Item quantity incorrect.");
-	})
+	Then("the items quantity should decrease by 5", function(callback) {
+		assert(m_item.quantity != m_startquan, "Item quantity unchanged.");
+		assert(m_item.quantity == (m_startquan - 5), "Item quantity incorrect.");
+
+		callback();
+	});
 
 });
