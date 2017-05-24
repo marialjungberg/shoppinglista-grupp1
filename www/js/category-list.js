@@ -1,4 +1,4 @@
-module.exports = class CategoryList {
+class CategoryList {
 // An item that could be added to a shopping list.
 // The item can have a name, a quantity and a category.
 
@@ -17,4 +17,8 @@ module.exports = class CategoryList {
 			}
 		}
 	}
+}
+
+if(typeof module !== "undefined"){
+	module.exports = CategoryList;
 }

@@ -1,4 +1,4 @@
-module.exports = class Item {
+class Item {
 // An item that could be added to a shopping list.
 // The item can have a name, a quantity and a category.
 
@@ -56,4 +56,8 @@ module.exports = class Item {
 		this.quantity++;
 	}
 
+}
+
+if(typeof module !== "undefined"){
+	module.exports = Item;
 }

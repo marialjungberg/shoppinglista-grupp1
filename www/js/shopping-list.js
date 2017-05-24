@@ -1,4 +1,4 @@
-module.exports = class ShoppingList {
+class ShoppingList {
 // A shopping list with a name
 
 	constructor(name) {
@@ -122,4 +122,8 @@ module.exports = class ShoppingList {
 		}
 	}
 
+}
+
+if(typeof module !== "undefined"){
+	module.exports = ShoppingList;
 }
