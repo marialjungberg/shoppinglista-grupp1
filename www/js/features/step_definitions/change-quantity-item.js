@@ -76,4 +76,18 @@ defineSupportCode(function({Given, When, Then}) {
 		callback();
 	});
 
+	When("I try to change the quantity of the item to a string", function(callback) {
+		m_item.quantity = "Tangerines";
+
+		callback();
+	});
+
+	Then("the item's quantity should remain unchanged", function(callback) {
+		assert(m_item.quantity == 3, "Item quantity should not have been changed.")
+	});
+
+	Then("the item quantity should still be a number.", function(callback) {
+		assert(typeof m_item.quantity == "number", "Item quantity set to string.");
+	})
+
 });
