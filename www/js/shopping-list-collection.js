@@ -1,6 +1,8 @@
-let ShoppingList = require('./shopping-list.js');
+if(typeof module !== "undefined"){
+	ShoppingList = require('./shopping-list.js');
+}
 
-module.exports = class ShoppingListCollection {
+class ShoppingListCollection {
 // A collection of shopping lists
 
 	constructor() {
@@ -20,4 +22,8 @@ module.exports = class ShoppingListCollection {
 			}
 		}
 	}
+}
+
+if(typeof module !== "undefined"){
+	module.exports = ShoppingListCollection;
 }
