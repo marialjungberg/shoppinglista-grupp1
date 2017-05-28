@@ -56,6 +56,10 @@ class Item {
 		this.quantity++;
 	}
 
+	subQuantity() {
+		this.quantity--;
+	}
+
 }
 
 if(typeof module !== "undefined"){

@@ -16,7 +16,7 @@ class App {
 
 	createItem() {
 		let itemName = $("#new-item-name").val();
-		let itemQuantity = $("#new-item-quantity").val();
+		let itemQuantity = $("#item-add-quantity").val();
 		let itemCategory = $("#new-item-category :selected").val();
 		try{
 			let item = new Item(itemName, itemQuantity, itemCategory);
@@ -69,15 +69,32 @@ class App {
 							"<tr id=\""+i+"\">"+
 								"<td>"+shoppingList.items[i].name+"</td>"+
 								"<td>"+
-	                                    "<p>minus</p>"+
-	                                    "<p>"+shoppingList.items[i].quantity+"</p>"+
-	                                    "<p>plus</p>"+
+									"<div class=\"input-group\">"+
+										"<span class=\"input-group-btn\">"+
+	                                    	"<input class=\"decrease-number btn btn-default\" type=\"button\" value=\"-\">"+
+	                                    "</span>"+
+	                                    "<input class=\"form-control\" id=\"item-quantity\" type=\"text\" value=\""+shoppingList.items[i].quantity+"\" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>"+
+	                                    "<span class=\"input-group-btn\">"+
+	                                    	"<input class=\"increase-number btn btn-default\" type=\"button\" value=\"+\">"+
+	                                    "</span>"+
+	                                "</div>"+
 	                            "</td>"+
 								"<td>"+shoppingList.items[i].category+"</td>"+
 								"<td>knapp</td>"+
 								"<td>knapp2</td>"+
 							"</tr>"+
 						"</tbody>";
+
+						/*<div class="input-group">
+                            <span class="input-group-btn"> 
+                                <input class="decrease-add-number btn btn-default" type="button" value="-">
+                            </span>
+                            <input class="form-control" id="item-add-quantity" type="text" value="1" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                            <span class="input-group-btn"> 
+                                <input class="increase-add-number btn btn-default" type="button" value="+">
+                            </span>
+                        </div>
+						*/
 
 			}
 			document.getElementById("item-list").innerHTML = html;
@@ -88,5 +105,13 @@ class App {
 		let name = this.shoppingListCollection.shoppingLists[index].name;
 		this.shoppingListCollection.deleteShoppingList(name);
 		this.printShoppingLists();
+	}
+
+	add(index){
+		this.shoppingListCollection.shoppingLists[this.rowId].items[index].addQuantity();
+	}
+
+	sub(index){
+		this.shoppingListCollection.shoppingLists[this.rowId].items[index].subQuantity();
 	}
 }

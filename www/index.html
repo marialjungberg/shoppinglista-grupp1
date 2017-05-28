@@ -68,14 +68,18 @@
                 <div class="row add-new">
                         <h5>Ny vara</h5>
                     <div class="col-sm-2">
-                        <div class="input-group">
                             <input type="text" class="form-control" id="new-item-name" placeholder="Namn">
-                        </div>                
                     </div>
                     <div class="col-sm-2">
                         <div class="input-group">
-                            <input type="text" class="form-control" id="new-item-quantity" placeholder="Kvantitet">
-                        </div>                
+                            <span class="input-group-btn"> 
+                                <input class="decrease-add-number btn btn-default" type="button" value="-">
+                            </span>
+                            <input class="form-control" id="item-add-quantity" type="text" value="1" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                            <span class="input-group-btn"> 
+                                <input class="increase-add-number btn btn-default" type="button" value="+">
+                            </span>
+                        </div>      
                     </div>
                     <div class="col-sm-2">
                         <div class="input-group">

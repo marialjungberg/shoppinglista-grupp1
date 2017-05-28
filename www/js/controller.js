@@ -1,14 +1,37 @@
-/*
-* Detta är för att visa hur ni kan göra knappar, först lägger ni class="" i index på objektet som ska tas emot, se exempel igenom att söka på test eller test2 i index
-* sen lägger man till en rad i översta satsen: $(".objNamn").click(funNamn); där objNamn är namnet ni bestämde i indexfilen och funNamn är funktionsnamnet som ska anropas
-*/
-
 $(function(){
 	$(".create-shoppinglist-btn").click(createShoppingList);
 	$(".create-item-btn").click(createItem);
 	$(".delete-list").click(function(){
 		app.deleteList(this.id);
 	});
+	$(".increase-add-number").click(function(e){
+		let previous = $("#item-add-quantity").val();
+		previous++;
+		$("#item-add-quantity").val(previous);
+	});
+	$(".decrease-add-number").click(function(e){
+		let previous = $("#item-add-quantity").val();
+		if(previous>0){
+			previous--;
+		}
+		$("#item-add-quantity").val(previous);
+	});
+});
+
+$(document).ready(function () {
+    $(document).delegate("#item-list tbody", "click", function (e) {
+
+    	let $tr = $(e.target).closest('tr');
+	    rowId = ($tr).attr("id");
+
+    	if(e.target.className==="increase-number btn btn-default"){
+    		app.add(rowId);
+			app.printItemList();
+    	}else if(e.target.className==="decrease-number btn btn-default"){
+    		app.sub(rowId);
+			app.printItemList();
+    	}
+    });
 });
 
 $(document).ready(function () {
