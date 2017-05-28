@@ -9,6 +9,14 @@ $(function(){
 	$(".create-shoppinglist-btn").click(createShoppingList);
 });
 
+$(document).ready(function () {
+    $(document).delegate("#collection-list tbody", "click", function (e) {
+        var $tr = $(e.target).closest('tr'),
+          rowId = ($tr).attr("id"); // Here you can capture the row id of clicked cell.
+        alert(rowId);
+    });
+});
+
 function test() {
 	console.log("Detta är ett test!");
 }
