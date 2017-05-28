@@ -5,3 +5,14 @@
               height: 80px;
               background-color: white;
             }
+
+
+.table-striped > tbody > tr:nth-of-type(odd) {
+  background-color: #f9a9a9;
+}
+.table-striped > tbody > tr:nth-of-type(even) {
+  background-color: #d9a9a9;
+}
+.table-hover > tbody > tr:hover {
+  background-color: #f5f5f5;
+}

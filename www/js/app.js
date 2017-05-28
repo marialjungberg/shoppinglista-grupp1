@@ -28,20 +28,21 @@ class App {
 	}
 
 	printShoppingLists(){
-		let html = "";
+		let html = "<tbody>";
 		for(let i = 0; i < this.shoppingListCollection.shoppingLists.length; i++){
 
-			html += "<tbody>"+
+			html += 
 						"<tr id=\""+i+"\">"+
 							"<td>"+this.shoppingListCollection.shoppingLists[i].name+"</td>"+
 							"<td>knapp</td>"+
 							"<td>"+
                                 "<input class=\"delete-list\" type=\"image\" src=\"images/delete.png\" style=\"width:20px;height:20px\"></span></input>"+
                             "</td>"+
-						"</tr>"+
-					"</tbody>";
+						"</tr>";
 
 		}
+		html+= "</tbody>";
+
 		document.getElementById("collection-list").innerHTML = html;
 	}
 
@@ -63,9 +64,11 @@ class App {
                                 "<th>knapp2</th>"+
                             "</tr>"+
                         "</thead>";
+
+            html += "<tbody>";
 			for(let i = 0; i < shoppingList.items.length; i++){
 
-				html += "<tbody>"+
+				html += 
 							"<tr id=\""+i+"\">"+
 								"<td>"+shoppingList.items[i].name+"</td>"+
 								"<td>"+
@@ -82,8 +85,7 @@ class App {
 								"<td>"+shoppingList.items[i].category+"</td>"+
 								"<td>knapp</td>"+
 								"<td>knapp2</td>"+
-							"</tr>"+
-						"</tbody>";
+							"</tr>";
 
 						/*<div class="input-group">
                             <span class="input-group-btn"> 
@@ -97,6 +99,7 @@ class App {
 						*/
 
 			}
+			html += "</tbody>";
 			document.getElementById("item-list").innerHTML = html;
 		}
 	}
