@@ -30,6 +30,9 @@ $(document).ready(function () {
     	}else if(e.target.className==="decrease-number btn btn-default"){
     		app.sub(rowId);
 			app.printItemList();
+    	}else if(e.target.className==="bought-icon"){
+    		app.bought(rowId);
+    		app.printItemList();
     	}
     });
 });

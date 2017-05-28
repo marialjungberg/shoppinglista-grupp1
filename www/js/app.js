@@ -68,35 +68,30 @@ class App {
             html += "<tbody>";
 			for(let i = 0; i < shoppingList.items.length; i++){
 
+				if(shoppingList.items[i].bought){
+					html += "<tr id=\""+i+"\" class=\"bought\">";
+				}else{
+					html += "<tr id=\""+i+"\">";
+				}
 				html += 
-							"<tr id=\""+i+"\">"+
-								"<td>"+shoppingList.items[i].name+"</td>"+
-								"<td>"+
-									"<div class=\"input-group\">"+
-										"<span class=\"input-group-btn\">"+
-	                                    	"<input class=\"decrease-number btn btn-default\" type=\"button\" value=\"-\">"+
-	                                    "</span>"+
-	                                    "<input class=\"form-control\" id=\"item-quantity\" type=\"text\" value=\""+shoppingList.items[i].quantity+"\" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>"+
-	                                    "<span class=\"input-group-btn\">"+
-	                                    	"<input class=\"increase-number btn btn-default\" type=\"button\" value=\"+\">"+
-	                                    "</span>"+
-	                                "</div>"+
-	                            "</td>"+
-								"<td>"+shoppingList.items[i].category+"</td>"+
-								"<td>knapp</td>"+
-								"<td>knapp2</td>"+
-							"</tr>";
-
-						/*<div class="input-group">
-                            <span class="input-group-btn"> 
-                                <input class="decrease-add-number btn btn-default" type="button" value="-">
-                            </span>
-                            <input class="form-control" id="item-add-quantity" type="text" value="1" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
-                            <span class="input-group-btn"> 
-                                <input class="increase-add-number btn btn-default" type="button" value="+">
-                            </span>
-                        </div>
-						*/
+							"<td>"+shoppingList.items[i].name+"</td>"+
+							"<td>"+
+								"<div class=\"input-group\">"+
+									"<span class=\"input-group-btn\">"+
+                                    	"<input class=\"decrease-number btn btn-default\" type=\"button\" value=\"-\">"+
+                                    "</span>"+
+                                    "<input class=\"form-control\" id=\"item-quantity\" type=\"text\" value=\""+shoppingList.items[i].quantity+"\" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>"+
+                                    "<span class=\"input-group-btn\">"+
+                                    	"<input class=\"increase-number btn btn-default\" type=\"button\" value=\"+\">"+
+                                    "</span>"+
+                                "</div>"+
+                            "</td>"+
+							"<td>"+shoppingList.items[i].category+"</td>"+
+							"<td>"+
+								"<input class=\"bought-icon\" type=\"image\" src=\"images/bought.png\" style=\"width:20px;height:20px\"></span></input>"+
+							"</td>"+
+							"<td>knapp2</td>"+
+						"</tr>";
 
 			}
 			html += "</tbody>";
@@ -116,5 +111,9 @@ class App {
 
 	sub(index){
 		this.shoppingListCollection.shoppingLists[this.rowId].items[index].subQuantity();
+	}
+
+	bought(index){
+		this.shoppingListCollection.shoppingLists[this.rowId].items[index].toggleBought();
 	}
 }
