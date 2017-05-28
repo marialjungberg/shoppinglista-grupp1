@@ -35,7 +35,9 @@ class App {
 						"<tr id=\""+i+"\">"+
 							"<td>"+this.shoppingListCollection.shoppingLists[i].name+"</td>"+
 							"<td>knapp</td>"+
-							"<td>knapp2</td>"+
+							"<td>"+
+                                "<input class=\"delete-list\" type=\"image\" src=\"images/delete.png\" style=\"width:20px;height:20px\"></span></input>"+
+                            "</td>"+
 						"</tr>"+
 					"</tbody>";
 
@@ -80,22 +82,11 @@ class App {
 			}
 			document.getElementById("item-list").innerHTML = html;
 		}
-		
+	}
 
-
-		/*<tbody>
-                            <tr>
-                                <td>Sallad</td>
-                                <td>
-                                    <p>minus</p>
-                                    <p>2</p>
-                                    <p>plus</p>
-                                </td>
-                                <td>frukt</td>
-                                <td>knapp</td>
-                                <td>knaop</td>
-                            </tr>
-                        </tbody>
-		*/
+	deleteList(index){
+		let name = this.shoppingListCollection.shoppingLists[index].name;
+		this.shoppingListCollection.deleteShoppingList(name);
+		this.printShoppingLists();
 	}
 }

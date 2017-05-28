@@ -51,14 +51,3 @@ function makeMenuChoiceActive(l){
     .parent().addClass('active');
 
 }
-
-$(document).ready(function () {
-    $(document).delegate("#collection-list tbody", "click", function (e) {
-        var $tr = $(e.target).closest('tr'),
-          rowId = ($tr).attr("id"); // Here you can capture the row id of clicked cell.
-        app.rowId = rowId;
-        app.printItemList();
-        app.setListName();
-        location.hash = "#list";
-    });
-});
