@@ -62,42 +62,41 @@
                 <div class="row">
                     <h1 id="list-name">Listnamn</h1>
                     <table class="table table-striped table-hover" id="item-list">
-                        <thead>
-                            <tr>
-                                <th>Namn</th>
-                                <th>Antal</th>
-                                <th>Kategori</th>
-                                <td>knapp</td>
-                                <td>knapp2</td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Sallad</td>
-                                <td>
-                                    <p>minus</p>
-                                    <p>2</p>
-                                    <p>plus</p>
-                                </td>
-                                <td>frukt</td>
-                                <td>knapp</td>
-                                <td>knaop</td>
-                            </tr>
-                        </tbody>
-                        <tbody>
-                            <tr>
-                                <td>godis</td>
-                                <td>
-                                    <p>minus</p>
-                                    <p>10</p>
-                                    <p>plus</p>
-                                </td>
-                                <td>onyttigt</td>
-                                <td>knapp</td>
-                                <td>knaop</td>
-                            </tr>
-                        </tbody>
+                        <!-- THIS AREA IS FILLED WITH LIST IN APP.JS -->
                     </table>
+                </div>
+                <div class="row add-new">
+                        <h5>Ny vara</h5>
+                    <div class="col-sm-2">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="new-item-name" placeholder="Namn">
+                        </div>                
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="new-item-quantity" placeholder="Kvantitet">
+                        </div>                
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="input-group">
+                            <select class="form-control" id="new-item-category">
+                                <option value="Bageri">Bageri</option>
+                                <option value="Deli">Deli</option>
+                                <option value="Drycker">Drycker</option>
+                                <option value="Frukt & Grönt">Frukt &amp; Grönt</option>
+                                <option value="Godis & Snacks">Godis &amp; Snacks</option>
+                                <option value="Hälsa">Hälsa</option>
+                                <option value="Kött & Chark">Kött &amp; Chark</option>
+                                <option value="Mejeri">Mejeri</option>
+                                <option value="Skafferi">Skafferi</option>
+                            </select>
+                            <span class="input-group-btn">
+                                <button class="btn btn-default create-item-btn" type="button">
+                                    <span class="glyphicon glyphicon-plus"></span>
+                                </button>
+                            </span>
+                        </div>                
+                    </div>
                 </div>
             </div>
         </main>

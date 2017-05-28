@@ -7,14 +7,7 @@ $(function(){
 	$(".test").click(test);
 	$(".test2").click(test2);
 	$(".create-shoppinglist-btn").click(createShoppingList);
-});
-
-$(document).ready(function () {
-    $(document).delegate("#collection-list tbody", "click", function (e) {
-        var $tr = $(e.target).closest('tr'),
-          rowId = ($tr).attr("id"); // Here you can capture the row id of clicked cell.
-        alert(rowId);
-    });
+	$(".create-item-btn").click(createItem);
 });
 
 function test() {
@@ -28,5 +21,8 @@ function test2() {
 
 function createShoppingList() {
 	app.createShoppingList();
+}
+function createItem() {
+	app.createItem();
 }
 

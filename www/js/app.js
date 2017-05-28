@@ -14,6 +14,19 @@ class App {
 		this.printShoppingLists();
 	}
 
+	createItem() {
+		let itemName = $("#new-item-name").val();
+		let itemQuantity = $("#new-item-quantity").val();
+		let itemCategory = $("#new-item-category :selected").val();
+		try{
+			let item = new Item(itemName, itemQuantity, itemCategory);
+			this.shoppingListCollection.shoppingLists[this.rowId].addItem(item);
+		}catch(err){
+			alert(err);
+		}
+		this.printItemList();
+	}
+
 	printShoppingLists(){
 		let html = "";
 		for(let i = 0; i < this.shoppingListCollection.shoppingLists.length; i++){
@@ -39,7 +52,15 @@ class App {
 	printItemList(){
 		if(this.rowId!=-1){
 			let shoppingList = this.shoppingListCollection.shoppingLists[this.rowId];
-			let html = "";
+			let html = "<thead>"+
+                            "<tr>"+
+                                "<th>Namn</th>"+
+                                "<th>Antal</th>"+
+                                "<th>Kategori</th>"+
+                                "<th>knapp</th>"+
+                                "<th>knapp2</th>"+
+                            "</tr>"+
+                        "</thead>";
 			for(let i = 0; i < shoppingList.items.length; i++){
 
 				html += "<tbody>"+
