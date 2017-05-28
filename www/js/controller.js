@@ -6,6 +6,7 @@
 $(function(){
 	$(".test").click(test);
 	$(".test2").click(test2);
+	$(".create-shoppinglist-btn").click(createShoppingList);
 });
 
 function test() {
@@ -16,3 +17,8 @@ function test() {
 function test2() {
 	console.log("Detta är också test!");
 }
+
+function createShoppingList() {
+	app.createShoppingList();
+}
+

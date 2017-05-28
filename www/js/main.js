@@ -1,3 +1,5 @@
+let app = new App();
+
 // Run the function switchPage
 // when the #-part of the URL changes
 window.onhashchange = switchPage;

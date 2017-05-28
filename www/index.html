@@ -11,6 +11,12 @@
         <link rel="stylesheet" href="css/main.css">
         <!-- JavaScript libraries -->
         <script src="js/jquery.js"></script>
+        <script src="js/app.js"></script>
+        <script src="js/shopping-list-collection.js"></script>
+        <script src="js/shopping-list.js"></script>
+        <script src="js/item.js"></script>
+        <script src="js/category-list.js"></script>
+        <script src="js/category.js"></script>
         <script src="bootstrap/js/bootstrap.min.js"></script>
 
         <script src="js/main.js"></script>
@@ -44,6 +50,19 @@
                             </tr>
                         </tbody>
                     </table>
+                </div>
+                <div class="row add-new">
+                    <div class="col-sm-6">
+                        <h5>Ny shoppinglista</h5>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="new-shoppinglist-name">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default create-shoppinglist-btn" type="button">
+                                    <span class="glyphicon glyphicon-plus"></span>
+                                </button>
+                            </span>
+                        </div>                
+                    </div>
                 </div>
             </div>
             <div class="page" id="list">
