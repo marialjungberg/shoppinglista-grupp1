@@ -82,7 +82,6 @@ class App {
 					sortedItems = filteredItems;
 				}
 			}
-
 			let html = "<thead>"+
                             "<tr>"+
                                 "<th>Namn</th>"+
@@ -96,7 +95,7 @@ class App {
             html += "<tbody>";
 			for(let i = 0; i < sortedItems.length; i++){
 
-				if(shoppingList.items[i].bought){
+				if(sortedItems[i].bought){
 					html += "<tr id=\""+i+"\" class=\"bought\">";
 				}else{
 					html += "<tr id=\""+i+"\">";
