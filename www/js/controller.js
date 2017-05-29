@@ -7,6 +7,9 @@ $(function(){
 	$(".edit-list").click(function(){
 		app.editList(this.id);
 	});
+	/*$(".confirm-edit-list").click(function(){
+		app.editList(this.id);
+	});*/
 	$(".increase-add-number").click(function(e){
 		let previous = $("#item-add-quantity").val();
 		previous++;
@@ -54,6 +57,9 @@ $(document).ready(function () {
     	if(e.target.className==="delete-list"){
     		$(".delete-list").attr('id', rowId);
     		$("#confirm-delete-list").modal();
+    	}else if(e.target.className==="edit-list"){
+    		$(".edit-list").attr('id', rowId);
+    		$("#edit-list-name").modal();
     	}else{
 	        rowClick(rowId);
     	}
