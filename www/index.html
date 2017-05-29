@@ -30,11 +30,6 @@
 
     <body>
         <header>
-        <button type="button" class="btn btn-default" aria-label="Left Align">
-        <a href="#list">
-  <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a></button>
-
-
         </header>    
 
         <main class="container">
@@ -64,59 +59,106 @@
             <!-- END Shoppinglist view -->
 
             <!-- Item list view -->
+
+
+            <!-- bakåt knappen -->
+
             <div class="page" id="list">
-                <div class="row">
-                    <h1 id="list-name">Listnamn</h1>
-                    <button type="button" class="btn btn-default sort-name-btn">Sortera på namn</button>
-                    <button type="button" class="btn btn-default sort-category-btn">Sortera på kategori</button>
-                    <button type="button" class="btn btn-default filter-bought-btn">Filtrera på köpta</button>
-                    <button type="button" class="btn btn-default filter-unbought-btn">Filtrera på oköpta</button>
-                    <button type="button" class="btn btn-default no-filter-btn">Ta bort filter</button>
-                    <table class="table table-striped table-hover" id="item-list">
-                        <!-- THIS AREA IS FILLED WITH LIST IN APP.JS -->
-                    </table>
+
+                         
+
+
+
+
+               <div class="row">
+               		<div class="col-xs-1">
+		              	<a href="#start"  class="btn btn-default back-btn">
+		 				 <span class="glyphicon glyphicon-menu-left" aria-hidden="true"> 				 	
+		 				 </span>
+ 						</a>
+ 					</div>
+ 					<div class="col-xs-11">
+ 			        	<h1 id="list-name">Listnamn</h1>
+ 			        </div>
+ 			    </div>
+
+ 			    <div class="row">
+ 			    	<div class="col-xs-12">
+                        <!-- dropdown, sort -->
+                        <div class="btn-group">
+                            <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                            Sortera
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="sort-name-btn">Namn</a></li>
+                                <li><a class="sort-category-btn">Kategori</a></li>
+                            </ul>
+                        </div>
+
+                        <!-- dropdown, filter -->
+                        <div class="btn-group">
+                            <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                            Filtrera
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="filter-bought-btn">Köpta</a></li>
+                                <li><a class="filter-unbought-btn">Oköpta</a></li>
+                                <li><a class="no-filter-btn">Ta bort filter</a></li>
+                            </ul>
+                        </div>
+
+	                    <table class="table table-striped table-hover" id="item-list">
+	                        <!-- THIS AREA IS FILLED WITH LIST IN APP.JS -->
+	                    </table>
+	                </div>
                 </div>
-                <div class="row add-new">
-                        <h5>Ny vara</h5>
-                    <div class="col-sm-2">
-                            <input type="text" class="form-control" id="new-item-name" placeholder="Namn">
-                    </div>
-                    <div class="col-sm-2">
-                        <div class="input-group">
-                            <span class="input-group-btn"> 
-                                <input class="decrease-add-number btn btn-default" type="button" value="-">
-                            </span>
-                            <input class="form-control" id="item-add-quantity" type="text" value="1" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
-                            <span class="input-group-btn"> 
-                                <input class="increase-add-number btn btn-default" type="button" value="+">
-                            </span>
-                        </div>      
-                    </div>
-                    <div class="col-sm-2">
-                        <div class="input-group">
-                            <select class="form-control" id="new-item-category">
-                                <option value="Bageri">Bageri</option>
-                                <option value="Deli">Deli</option>
-                                <option value="Drycker">Drycker</option>
-                                <option value="Frukt & Grönt">Frukt &amp; Grönt</option>
-                                <option value="Godis & Snacks">Godis &amp; Snacks</option>
-                                <option value="Hälsa">Hälsa</option>
-                                <option value="Kött & Chark">Kött &amp; Chark</option>
-                                <option value="Mejeri">Mejeri</option>
-                                <option value="Skafferi">Skafferi</option>
-                            </select>
-                            <span class="input-group-btn">
-                                <button class="btn btn-default create-item-btn" type="button">
-                                    <span class="glyphicon glyphicon-plus"></span>
-                                </button>
-                            </span>
-                        </div>                
-                    </div>
-                </div>
+                <div class="container add-new">
+	                <div class="row">
+	                	<div class="col-xs-12">
+	                        <h5>Ny vara</h5>
+	                    </div>
+	                    <div class="col-xs-4 cols-sm-5 col-md-6">
+	                            <input type="text" class="form-control" id="new-item-name" placeholder="Namn">
+	                    </div>
+	                    <div class="col-xs-4 cols-sm-3 col-md-2">
+	                        <div class="input-group">
+	                            <span class="input-group-btn"> 
+	                                <input class="decrease-add-number btn btn-default" type="button" value="-">
+	                            </span>
+	                            <input class="form-control" id="item-add-quantity" type="text" value="1" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+	                            <span class="input-group-btn"> 
+	                                <input class="increase-add-number btn btn-default" type="button" value="+">
+	                            </span>
+	                        </div>      
+	                    </div>
+	                    <div class="col-xs-4 cols-sm-4">
+	                        <div class="input-group">
+	                            <select class="form-control" id="new-item-category">
+	                                <option value="Bageri">Bageri</option>
+	                                <option value="Deli">Deli</option>
+	                                <option value="Drycker">Drycker</option>
+	                                <option value="Frukt & Grönt">Frukt &amp; Grönt</option>
+	                                <option value="Godis & Snacks">Godis &amp; Snacks</option>
+	                                <option value="Hälsa">Hälsa</option>
+	                                <option value="Kött & Chark">Kött &amp; Chark</option>
+	                                <option value="Mejeri">Mejeri</option>
+	                                <option value="Skafferi">Skafferi</option>
+	                            </select>
+	                            <span class="input-group-btn">
+	                                <button class="btn btn-default create-item-btn" type="button">
+	                                    <span class="glyphicon glyphicon-plus"></span>
+	                                </button>
+	                            </span>
+	                        </div>                
+	                    </div>
+	                </div>
+	            </div>
             </div>
             <!-- END Item list view -->
 
-            <!-- ALERT MODAL -->
+            <!-- LIST ALERT MODAL -->
             <div class="modal fade" id="confirm-delete-list" role="dialog">
                 <div class="modal-dialog">
                     <!-- Modal content-->
@@ -155,7 +197,28 @@
                     </div>
                 </div>
             </div>
+
+            <!-- ITEM ALERT MODAL -->
+            <div class="modal fade" id="confirm-delete-item" role="dialog">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Varning!</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>Är du säker på att du vill ta bort listan?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Avbryt</button>
+                            <button type="button" class="btn btn-danger delete-item" data-dismiss="modal">Ta bort</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!-- END SHOPPING LIST EDIT MODAL -->
+            <!-- END ALERT MODAL -->
         </main>
     </body>
 </html>

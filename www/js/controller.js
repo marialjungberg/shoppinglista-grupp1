@@ -1,8 +1,27 @@
 $(function(){
+	
 	$(".create-shoppinglist-btn").click(createShoppingList);
 	$(".create-item-btn").click(createItem);
+
+	// create list and items on ENTER
+	$('#new-shoppinglist-name').keyup(function(e){
+		if(e.which === 13){
+			createShoppingList();
+		}
+	});
+
+	$('#new-item-name').keyup(function(e){
+		if(e.which === 13){
+			createItem();
+		}
+	});
+
+
 	$(".delete-list").click(function(){
 		app.deleteList(this.id);
+	});
+	$(".delete-item").click(function(){
+		app.deleteItem(this.id);
 	});
 	$(".edit-list").click(function(){
 		app.editList(this.id);
@@ -33,17 +52,20 @@ $(document).ready(function () {
     $(document).delegate("#item-list tbody", "click", function (e) {
 
     	let $tr = $(e.target).closest('tr');
-	    rowId = ($tr).attr("id");
+	    name = ($tr).attr("id");
 
     	if(e.target.className==="increase-number btn btn-default"){
-    		app.add(rowId);
+    		app.add(name);
 			app.printItemList();
     	}else if(e.target.className==="decrease-number btn btn-default"){
-    		app.sub(rowId);
+    		app.sub(name);
 			app.printItemList();
-    	}else if(e.target.className==="bought-icon"){
-    		app.bought(rowId);
+    	}else if(e.target.className==="btn btn-default bought-icon" || e.target.className==="btn btn-default bought-icon active" || e.target.className==="glyphicon glyphicon-shopping-cart"){
+    		app.bought(name);
     		app.printItemList();
+    	}else if(e.target.className==="btn btn-default delete-item-icon" || e.target.className==="glyphicon glyphicon-trash"){
+    		$(".delete-item").attr('id', name);
+    		$("#confirm-delete-item").modal();
     	}
     });
 });
@@ -54,7 +76,7 @@ $(document).ready(function () {
     	let $tr = $(e.target).closest('tr');
 	    rowId = ($tr).attr("id");
 
-    	if(e.target.className==="delete-list"){
+    	if(e.target.className==="glyphicon glyphicon-trash" || e.target.className==="btn btn-default delete-list"){
     		$(".delete-list").attr('id', rowId);
     		$("#confirm-delete-list").modal();
     	}else if(e.target.className==="edit-list"){
@@ -75,10 +97,14 @@ function rowClick(row){
 
 function createShoppingList() {
 	app.createShoppingList();
+	$('#new-shoppinglist-name').val('');
+	window.scrollTo(0,1000000000);
 }
 
 function createItem() {
 	app.createItem();
+	$('#new-item-name').val('');
+	window.scrollTo(0,1000000000);
 }
 
 function sortName() {

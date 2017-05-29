@@ -44,8 +44,9 @@ class App {
 				"</tr>";	
 		
 			html+= "</tbody>";
+		}
 
-		document.getElementById("collection-list").innerHTML = html;
+			document.getElementById("collection-list").innerHTML = html;
 	}
 
 	setListName(){
@@ -59,6 +60,7 @@ class App {
 		let sortedItems;
 
 		if(this.rowId!=-1){
+			let active = "";
 			if (this.filter === "bought"){
 				filteredItems = this.shoppingListCollection.shoppingLists[this.rowId].getBoughtItems();
 			}
@@ -82,13 +84,14 @@ class App {
 					sortedItems = filteredItems;
 				}
 			}
+
 			let html = "<thead>"+
                             "<tr>"+
                                 "<th>Namn</th>"+
                                 "<th>Antal</th>"+
                                 "<th>Kategori</th>"+
-                                "<th>knapp</th>"+
-                                "<th>knapp2</th>"+
+                                "<th>Markera Köpt</th>"+
+                                "<th>Radera</th>"+
                             "</tr>"+
                         "</thead>";
 
@@ -96,12 +99,13 @@ class App {
 			for(let i = 0; i < sortedItems.length; i++){
 
 				if(sortedItems[i].bought){
-					html += "<tr id=\""+i+"\" class=\"bought\">";
+					html += "<tr id=\""+sortedItems[i].name+"\" class=\"bought\">";
+					active = " active";
 				}else{
-					html += "<tr id=\""+i+"\">";
+					html += "<tr id=\""+sortedItems[i].name+"\">";
+					active = "";
 				}
 				html += 
-							"<tr id=\""+i+"\">"+
 							"<td>"+sortedItems[i].name+"</td>"+
 							"<td>"+
 								"<div class=\"input-group\">"+
@@ -116,9 +120,19 @@ class App {
                             "</td>"+
 							"<td>"+sortedItems[i].category+"</td>"+
 							"<td>"+
-								"<input class=\"bought-icon\" type=\"image\" src=\"images/bought.png\" style=\"width:20px;height:20px\"></span></input>"+
+								"<span class=\"input-group-btn\">"+
+	                                "<button class=\"btn btn-default bought-icon"+active+"\" type=\"button\">"+
+	                                    "<span class=\"glyphicon glyphicon-shopping-cart\"></span>"+
+	                                "</button>"+
+                            	"</span>"+
 							"</td>"+
-							"<td>knapp2</td>"+
+							"<td>"+
+								"<span class=\"input-group-btn\">"+
+	                                "<button class=\"btn btn-default delete-item-icon\" type=\"button\">"+
+	                                    "<span class=\"glyphicon glyphicon-trash\"></span>"+
+	                                "</button>"+
+                            	"</span>"+
+							"</td>"+
 						"</tr>";
 
 			}
@@ -141,12 +155,20 @@ class App {
 		this.printShoppingLists();
 	}
 
-	add(index){
-		this.shoppingListCollection.shoppingLists[this.rowId].items[index].addQuantity();
+	add(name){
+		for(let i = 0; i<this.shoppingListCollection.shoppingLists[this.rowId].items.length; i++){
+			if(this.shoppingListCollection.shoppingLists[this.rowId].items[i].name === name){
+				this.shoppingListCollection.shoppingLists[this.rowId].items[i].addQuantity();
+			}
+		}
 	}
 
-	sub(index){
-		this.shoppingListCollection.shoppingLists[this.rowId].items[index].subQuantity();
+	sub(name){
+		for(let i = 0; i<this.shoppingListCollection.shoppingLists[this.rowId].items.length; i++){
+			if(this.shoppingListCollection.shoppingLists[this.rowId].items[i].name === name){
+				this.shoppingListCollection.shoppingLists[this.rowId].items[i].subQuantity();
+			}
+		}
 	}
 
 	sortName() {
@@ -174,7 +196,16 @@ class App {
 		this.printItemList();
 	}
 
-	bought(index){
-		this.shoppingListCollection.shoppingLists[this.rowId].items[index].toggleBought();
+	bought(name){
+		for(let i = 0; i<this.shoppingListCollection.shoppingLists[this.rowId].items.length; i++){
+			if(this.shoppingListCollection.shoppingLists[this.rowId].items[i].name === name){
+				this.shoppingListCollection.shoppingLists[this.rowId].items[i].toggleBought();
+			}
+		}
+	}
+
+	deleteItem(name){
+		this.shoppingListCollection.shoppingLists[this.rowId].removeItem(name);
+		this.printItemList();
 	}
 }
