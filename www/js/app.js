@@ -33,40 +33,20 @@ class App {
 		let html = "<tbody>";
 		for(let i = 0; i < this.shoppingListCollection.shoppingLists.length; i++){
 
-			if (this.shoppingListCollection.editing == i) {
-				html += 
-						"<tr id=\""+i+"\">"+
-							"<td><input type=\"text\" class=\"form-control\" id=\"edit-shoppinglist-name\"></td>"+
-							"<td>"+
-								"<input class=\"edit-list\" type=\"image\" src=\"images/ok.png\" style=\"width:20px;height:20px\"></span></input>"+
-							"<td>"+
-                                "<span class=\"input-group-btn\">"+
-	                                "<button class=\"btn btn-default delete-list\" type=\"button\">"+
-	                                    "<span class=\"glyphicon glyphicon-trash\"></span>"+
-	                                "</button>"+
-                            	"</span>"+
-                            "</td>"+
-						"</tr>";
-			}
-			else {
-				html += 
-						"<tr id=\""+i+"\">"+
-							"<td>"+this.shoppingListCollection.shoppingLists[i].name+"</td>"+
-							"<td>"+
-								"<input class=\"edit-list\" type=\"image\" src=\"images/edit.png\" style=\"width:20px;height:20px\"></span></input>"+
-							"<td>"+
-								"<span class=\"input-group-btn\">"+
-	                                "<button class=\"btn btn-default delete-list\" type=\"button\">"+
-	                                    "<span class=\"glyphicon glyphicon-trash\"></span>"+
-	                                "</button>"+
-                            	"</span>"+
-                            "</td>"+
-						"</tr>";	
-			}
+			html += 
+				"<tr id=\""+i+"\">"+
+				"<td>"+this.shoppingListCollection.shoppingLists[i].name+"</td>"+
+				"<td>"+
+				"<input class=\"edit-list\" type=\"image\" src=\"images/edit.png\" style=\"width:20px;height:20px\"></span></input>"+
+				"<td>"+
+				"<input class=\"delete-list\" type=\"image\" src=\"images/delete.png\" style=\"width:20px;height:20px\"></span></input>"+
+				"</td>"+
+				"</tr>";	
+		
+			html+= "</tbody>";
 		}
-		html+= "</tbody>";
 
-		document.getElementById("collection-list").innerHTML = html;
+			document.getElementById("collection-list").innerHTML = html;
 	}
 
 	setListName(){
@@ -168,7 +148,11 @@ class App {
 	}
 
 	editList(index){
-		this.shoppingListCollection.editing = index;
+		//this.shoppingListCollection[index].name = newName;
+
+		let shoppingListName = $("#edit-shoppinglist-name").val();
+		this.shoppingListCollection[index] = newName;
+		this.printShoppingLists();
 	}
 
 	add(name){

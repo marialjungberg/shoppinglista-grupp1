@@ -30,9 +30,6 @@
 
     <body>
         <header>
-      
-
-
         </header>    
 
         <main class="container">
@@ -187,6 +184,25 @@
                 </div>
             </div>
             <!-- END ALERT MODAL -->
+            <!-- SHOPPING LIST EDIT MODAL -->
+            <div class="modal edit" id="edit-list-name" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Ändra Namn</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>Välj ett nytt namn:</p>
+                            <input type="text" class="form-control" id="edit-shoppinglist-name">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Avbryt</button>
+                            <button type="button" class="btn btn-default confirm-list-edit" data-dismiss="modal">Bekräfta</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <!-- ITEM ALERT MODAL -->
             <div class="modal fade" id="confirm-delete-item" role="dialog">
@@ -207,6 +223,7 @@
                     </div>
                 </div>
             </div>
+            <!-- END SHOPPING LIST EDIT MODAL -->
             <!-- END ALERT MODAL -->
         </main>
     </body>
