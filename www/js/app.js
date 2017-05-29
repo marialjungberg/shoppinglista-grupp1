@@ -5,6 +5,8 @@ class App {
 	constructor() {
 		this.shoppingListCollection = new ShoppingListCollection();
 		this.rowId = -1;
+		this.filter = "none";
+		this.sort = "name";
 	}
 
 	createShoppingList() {
@@ -53,8 +55,34 @@ class App {
 	}
 
 	printItemList(){
+		let filteredItems;
+		let sortedItems;
+
 		if(this.rowId!=-1){
-			let shoppingList = this.shoppingListCollection.shoppingLists[this.rowId];
+			if (this.filter === "bought"){
+				filteredItems = this.shoppingListCollection.shoppingLists[this.rowId].getBoughtItems();
+			}
+			else {
+				if (this.filter === "unbought"){
+					filteredItems = this.shoppingListCollection.shoppingLists[this.rowId].getNotBoughtItems();
+				}
+				else {
+					filteredItems = this.shoppingListCollection.shoppingLists[this.rowId].items.slice();
+				}
+			}
+
+			if (this.sort === "name"){
+				sortedItems = this.shoppingListCollection.shoppingLists[this.rowId].getSortAlphabetically(filteredItems);
+			}
+			else {
+				if (this.sort === "category") {
+					sortedItems = this.shoppingListCollection.shoppingLists[this.rowId].getSortCategory(filteredItems);
+				}
+				else {
+					sortedItems = filteredItems;
+				}
+			}
+
 			let html = "<thead>"+
                             "<tr>"+
                                 "<th>Namn</th>"+
@@ -66,23 +94,23 @@ class App {
                         "</thead>";
 
             html += "<tbody>";
-			for(let i = 0; i < shoppingList.items.length; i++){
+			for(let i = 0; i < sortedItems.length; i++){
 
 				html += 
 							"<tr id=\""+i+"\">"+
-								"<td>"+shoppingList.items[i].name+"</td>"+
+								"<td>"+sortedItems[i].name+"</td>"+
 								"<td>"+
 									"<div class=\"input-group\">"+
 										"<span class=\"input-group-btn\">"+
 	                                    	"<input class=\"decrease-number btn btn-default\" type=\"button\" value=\"-\">"+
 	                                    "</span>"+
-	                                    "<input class=\"form-control\" id=\"item-quantity\" type=\"text\" value=\""+shoppingList.items[i].quantity+"\" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>"+
+	                                    "<input class=\"form-control\" id=\"item-quantity\" type=\"text\" value=\""+sortedItems[i].quantity+"\" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>"+
 	                                    "<span class=\"input-group-btn\">"+
 	                                    	"<input class=\"increase-number btn btn-default\" type=\"button\" value=\"+\">"+
 	                                    "</span>"+
 	                                "</div>"+
 	                            "</td>"+
-								"<td>"+shoppingList.items[i].category+"</td>"+
+								"<td>"+sortedItems[i].category+"</td>"+
 								"<td>knapp</td>"+
 								"<td>knapp2</td>"+
 							"</tr>";
@@ -116,5 +144,30 @@ class App {
 
 	sub(index){
 		this.shoppingListCollection.shoppingLists[this.rowId].items[index].subQuantity();
+	}
+
+	sortName() {
+		this.sort = "name";
+		this.printItemList();
+	}
+
+	sortCategory() {
+		this.sort = "category";
+		this.printItemList();
+	}
+
+	filterBought() {
+		this.filter = "bought";
+		this.printItemList();
+	}
+
+	filterUnbought() {
+		this.filter = "unbought";
+		this.printItemList();
+	}
+
+	noFilter() {
+		this.filter = "none";
+		this.printItemList();
 	}
 }

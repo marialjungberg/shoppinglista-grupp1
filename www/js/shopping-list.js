@@ -68,9 +68,15 @@ class ShoppingList {
 		}
 	}
 
-	getSortAlphabetically() {
+	getSortAlphabetically(arr) {
 		let sortedArray;
-		sortedArray = this.items.slice();
+
+		if (Array.isArray(arr)) {
+			sortedArray = arr;
+		}
+		else {
+			sortedArray = this.items.slice();
+		}
 
 		sortedArray.sort(
 			function(a, b) {
@@ -91,10 +97,16 @@ class ShoppingList {
 		return sortedArray;
 	}
 
-	getSortCategory() {
-		let sortedArray = [];
+	getSortCategory(arr) {
+		let sortedArray;
 
-		sortedArray = this.items.slice();
+		if (Array.isArray(arr)) {
+			sortedArray = arr;
+		}
+		else {
+			sortedArray = this.items.slice();
+		}
+
 		sortedArray.sort(
 			function(a, b) {
 				var categoryA = a.category.toUpperCase(); // ignore upper and lowercase
