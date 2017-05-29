@@ -32,7 +32,6 @@ class App {
 	printShoppingLists(){
 		let html = "<tbody>";
 		for(let i = 0; i < this.shoppingListCollection.shoppingLists.length; i++){
-
 			html += 
 				"<tr id=\""+i+"\">"+
 				"<td>"+this.shoppingListCollection.shoppingLists[i].name+"</td>"+
@@ -47,10 +46,10 @@ class App {
 				"</td>"+
 				"</tr>";	
 		
-			html+= "</tbody>";
 		}
+			html+= "</tbody>";
 
-			document.getElementById("collection-list").innerHTML = html;
+		document.getElementById("collection-list").innerHTML = html;
 	}
 
 	setListName(){
