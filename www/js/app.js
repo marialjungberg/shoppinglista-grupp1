@@ -32,21 +32,24 @@ class App {
 	printShoppingLists(){
 		let html = "<tbody>";
 		for(let i = 0; i < this.shoppingListCollection.shoppingLists.length; i++){
-
 			html += 
 				"<tr id=\""+i+"\">"+
 				"<td>"+this.shoppingListCollection.shoppingLists[i].name+"</td>"+
 				"<td>"+
 				"<input class=\"edit-list\" type=\"image\" src=\"images/edit.png\" style=\"width:20px;height:20px\"></span></input>"+
 				"<td>"+
-				"<input class=\"delete-list\" type=\"image\" src=\"images/delete.png\" style=\"width:20px;height:20px\"></span></input>"+
+					"<span class=\"input-group-btn\">"+
+		                "<button class=\"btn btn-default delete-list\" type=\"button\">"+
+		                    "<span class=\"glyphicon glyphicon-trash\"></span>"+
+		                "</button>"+
+	                "</span>"+
 				"</td>"+
 				"</tr>";	
 		
-			html+= "</tbody>";
 		}
+			html+= "</tbody>";
 
-			document.getElementById("collection-list").innerHTML = html;
+		document.getElementById("collection-list").innerHTML = html;
 	}
 
 	setListName(){

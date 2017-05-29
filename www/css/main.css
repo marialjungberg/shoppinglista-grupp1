@@ -8,16 +8,20 @@
 	z-index:1000;
 }
 
+
+
+}
+
 body {
 	margin-bottom:100px;
 }
 
 .table-striped > tbody > tr:nth-of-type(odd) {
-	background-color: #f9a9a9;
+	background-color: #cee1ff;
 }
 
 .table-striped > tbody > tr:nth-of-type(even) {
-	background-color: #d9a9a9;
+	background-color: #e8f3ff;
 }
 
 .table-striped > tbody > tr:nth-of-type(odd).bought {
