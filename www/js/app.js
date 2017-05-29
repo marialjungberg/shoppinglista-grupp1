@@ -39,7 +39,11 @@ class App {
 				"<td>"+
 				"<input class=\"edit-list\" type=\"image\" src=\"images/edit.png\" style=\"width:20px;height:20px\"></span></input>"+
 				"<td>"+
-				"<input class=\"delete-list\" type=\"image\" src=\"images/delete.png\" style=\"width:20px;height:20px\"></span></input>"+
+					"<span class=\"input-group-btn\">"+
+		                "<button class=\"btn btn-default delete-list\" type=\"button\">"+
+		                    "<span class=\"glyphicon glyphicon-trash\"></span>"+
+		                "</button>"+
+	                "</span>"+
 				"</td>"+
 				"</tr>";	
 		
