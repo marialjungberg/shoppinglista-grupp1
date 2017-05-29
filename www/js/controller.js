@@ -4,6 +4,9 @@ $(function(){
 	$(".delete-list").click(function(){
 		app.deleteList(this.id);
 	});
+	$(".edit-list").click(function(){
+		app.editList(this.id);
+	});
 	$(".increase-add-number").click(function(e){
 		let previous = $("#item-add-quantity").val();
 		previous++;

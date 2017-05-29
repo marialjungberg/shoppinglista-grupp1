@@ -7,6 +7,7 @@ class ShoppingListCollection {
 
 	constructor() {
 		this.shoppingLists = [];
+		this.editing = -1;
 	}
 	
 	addShoppingList(shoppingList) {
