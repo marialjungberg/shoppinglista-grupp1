@@ -46,16 +46,19 @@ $(document).ready(function () {
     $(document).delegate("#item-list tbody", "click", function (e) {
 
     	let $tr = $(e.target).closest('tr');
-	    rowId = ($tr).attr("id");
+	    name = ($tr).attr("id");
 
     	if(e.target.className==="increase-number btn btn-default"){
-    		app.add(rowId);
+    		app.add(name);
 			app.printItemList();
     	}else if(e.target.className==="decrease-number btn btn-default"){
-    		app.sub(rowId);
+    		app.sub(name);
 			app.printItemList();
-    	}else if(e.target.className==="btn btn-default bought-icon" || e.target.className==="btn btn-default bought-icon active"){
-    		app.bought(rowId);
+    	}else if(e.target.className==="btn btn-default bought-icon" || e.target.className==="btn btn-default bought-icon active" || e.target.className==="glyphicon glyphicon-shopping-cart"){
+    		app.bought(name);
+    		app.printItemList();
+    	}else if(e.target.className==="btn btn-default delete-item-icon" || e.target.className==="glyphicon glyphicon-trash"){
+    		app.deleteItem(name);
     		app.printItemList();
     	}
     });
