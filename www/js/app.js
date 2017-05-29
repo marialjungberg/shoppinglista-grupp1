@@ -72,6 +72,7 @@ class App {
 		let sortedItems;
 
 		if(this.rowId!=-1){
+			let active = "";
 			if (this.filter === "bought"){
 				filteredItems = this.shoppingListCollection.shoppingLists[this.rowId].getBoughtItems();
 			}
@@ -95,13 +96,14 @@ class App {
 					sortedItems = filteredItems;
 				}
 			}
+			
 			let html = "<thead>"+
                             "<tr>"+
                                 "<th>Namn</th>"+
                                 "<th>Antal</th>"+
                                 "<th>Kategori</th>"+
-                                "<th>knapp</th>"+
-                                "<th>knapp2</th>"+
+                                "<th>Markera Köpt</th>"+
+                                "<th>Radera</th>"+
                             "</tr>"+
                         "</thead>";
 
@@ -110,8 +112,10 @@ class App {
 
 				if(sortedItems[i].bought){
 					html += "<tr id=\""+i+"\" class=\"bought\">";
+					active = " active";
 				}else{
 					html += "<tr id=\""+i+"\">";
+					active = "";
 				}
 				html += 
 							"<tr id=\""+i+"\">"+
@@ -129,7 +133,11 @@ class App {
                             "</td>"+
 							"<td>"+sortedItems[i].category+"</td>"+
 							"<td>"+
-								"<input class=\"bought-icon\" type=\"image\" src=\"images/bought.png\" style=\"width:20px;height:20px\"></span></input>"+
+								"<span class=\"input-group-btn\">"+
+	                                "<button class=\"btn btn-default bought-icon"+active+"\" type=\"button\">"+
+	                                    "<span class=\"glyphicon glyphicon-shopping-cart\"></span>"+
+	                                "</button>"+
+                            	"</span>"+
 							"</td>"+
 							"<td>knapp2</td>"+
 						"</tr>";
