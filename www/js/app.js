@@ -5,6 +5,8 @@ class App {
 	constructor() {
 		this.shoppingListCollection = new ShoppingListCollection();
 		this.rowId = -1;
+		this.filter = "none";
+		this.sort = "name";
 	}
 
 	createShoppingList() {
@@ -31,15 +33,28 @@ class App {
 		let html = "<tbody>";
 		for(let i = 0; i < this.shoppingListCollection.shoppingLists.length; i++){
 
-			html += 
+			if (this.shoppingListCollection.editing == i) {
+				html += 
 						"<tr id=\""+i+"\">"+
-							"<td>"+this.shoppingListCollection.shoppingLists[i].name+"</td>"+
-							"<td>knapp</td>"+
+							"<td><input type=\"text\" class=\"form-control\" id=\"edit-shoppinglist-name\"></td>"+
+							"<td>"+
+								"<input class=\"edit-list\" type=\"image\" src=\"images/ok.png\" style=\"width:20px;height:20px\"></span></input>"+
 							"<td>"+
                                 "<input class=\"delete-list\" type=\"image\" src=\"images/delete.png\" style=\"width:20px;height:20px\"></span></input>"+
                             "</td>"+
 						"</tr>";
-
+			}
+			else {
+				html += 
+						"<tr id=\""+i+"\">"+
+							"<td>"+this.shoppingListCollection.shoppingLists[i].name+"</td>"+
+							"<td>"+
+								"<input class=\"edit-list\" type=\"image\" src=\"images/edit.png\" style=\"width:20px;height:20px\"></span></input>"+
+							"<td>"+
+                                "<input class=\"delete-list\" type=\"image\" src=\"images/delete.png\" style=\"width:20px;height:20px\"></span></input>"+
+                            "</td>"+
+						"</tr>";	
+			}
 		}
 		html+= "</tbody>";
 
@@ -53,9 +68,35 @@ class App {
 	}
 
 	printItemList(){
+		let filteredItems;
+		let sortedItems;
+
 		if(this.rowId!=-1){
 			let active = "";
-			let shoppingList = this.shoppingListCollection.shoppingLists[this.rowId];
+			if (this.filter === "bought"){
+				filteredItems = this.shoppingListCollection.shoppingLists[this.rowId].getBoughtItems();
+			}
+			else {
+				if (this.filter === "unbought"){
+					filteredItems = this.shoppingListCollection.shoppingLists[this.rowId].getNotBoughtItems();
+				}
+				else {
+					filteredItems = this.shoppingListCollection.shoppingLists[this.rowId].items.slice();
+				}
+			}
+
+			if (this.sort === "name"){
+				sortedItems = this.shoppingListCollection.shoppingLists[this.rowId].getSortAlphabetically(filteredItems);
+			}
+			else {
+				if (this.sort === "category") {
+					sortedItems = this.shoppingListCollection.shoppingLists[this.rowId].getSortCategory(filteredItems);
+				}
+				else {
+					sortedItems = filteredItems;
+				}
+			}
+			
 			let html = "<thead>"+
                             "<tr>"+
                                 "<th>Namn</th>"+
@@ -67,9 +108,9 @@ class App {
                         "</thead>";
 
             html += "<tbody>";
-			for(let i = 0; i < shoppingList.items.length; i++){
+			for(let i = 0; i < sortedItems.length; i++){
 
-				if(shoppingList.items[i].bought){
+				if(sortedItems[i].bought){
 					html += "<tr id=\""+i+"\" class=\"bought\">";
 					active = " active";
 				}else{
@@ -77,19 +118,20 @@ class App {
 					active = "";
 				}
 				html += 
-							"<td>"+shoppingList.items[i].name+"</td>"+
+							"<tr id=\""+i+"\">"+
+							"<td>"+sortedItems[i].name+"</td>"+
 							"<td>"+
 								"<div class=\"input-group\">"+
 									"<span class=\"input-group-btn\">"+
                                     	"<input class=\"decrease-number btn btn-default\" type=\"button\" value=\"-\">"+
                                     "</span>"+
-                                    "<input class=\"form-control\" id=\"item-quantity\" type=\"text\" value=\""+shoppingList.items[i].quantity+"\" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>"+
+                                    "<input class=\"form-control\" id=\"item-quantity\" type=\"text\" value=\""+sortedItems[i].quantity+"\" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>"+
                                     "<span class=\"input-group-btn\">"+
                                     	"<input class=\"increase-number btn btn-default\" type=\"button\" value=\"+\">"+
                                     "</span>"+
                                 "</div>"+
                             "</td>"+
-							"<td>"+shoppingList.items[i].category+"</td>"+
+							"<td>"+sortedItems[i].category+"</td>"+
 							"<td>"+
 								"<span class=\"input-group-btn\">"+
 	                                "<button class=\"btn btn-default bought-icon"+active+"\" type=\"button\">"+
@@ -112,12 +154,41 @@ class App {
 		this.printShoppingLists();
 	}
 
+	editList(index){
+		this.shoppingListCollection.editing = index;
+	}
+
 	add(index){
 		this.shoppingListCollection.shoppingLists[this.rowId].items[index].addQuantity();
 	}
 
 	sub(index){
 		this.shoppingListCollection.shoppingLists[this.rowId].items[index].subQuantity();
+	}
+
+	sortName() {
+		this.sort = "name";
+		this.printItemList();
+	}
+
+	sortCategory() {
+		this.sort = "category";
+		this.printItemList();
+	}
+
+	filterBought() {
+		this.filter = "bought";
+		this.printItemList();
+	}
+
+	filterUnbought() {
+		this.filter = "unbought";
+		this.printItemList();
+	}
+
+	noFilter() {
+		this.filter = "none";
+		this.printItemList();
 	}
 
 	bought(index){
