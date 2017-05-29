@@ -1,6 +1,22 @@
 $(function(){
+	
 	$(".create-shoppinglist-btn").click(createShoppingList);
 	$(".create-item-btn").click(createItem);
+
+	// create list and items on ENTER
+	$('#new-shoppinglist-name').keyup(function(e){
+		if(e.which === 13){
+			createShoppingList();
+		}
+	});
+
+	$('#new-item-name').keyup(function(e){
+		if(e.which === 13){
+			createItem();
+		}
+	});
+
+
 	$(".delete-list").click(function(){
 		app.deleteList(this.id);
 	});
@@ -69,10 +85,14 @@ function rowClick(row){
 
 function createShoppingList() {
 	app.createShoppingList();
+	$('#new-shoppinglist-name').val('');
+	window.scrollTo(0,1000000000);
 }
 
 function createItem() {
 	app.createItem();
+	$('#new-item-name').val('');
+	window.scrollTo(0,1000000000);
 }
 
 function sortName() {
