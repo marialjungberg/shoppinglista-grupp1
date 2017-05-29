@@ -96,7 +96,7 @@ class App {
 					sortedItems = filteredItems;
 				}
 			}
-			
+
 			let html = "<thead>"+
                             "<tr>"+
                                 "<th>Namn</th>"+
@@ -111,14 +111,13 @@ class App {
 			for(let i = 0; i < sortedItems.length; i++){
 
 				if(sortedItems[i].bought){
-					html += "<tr id=\""+i+"\" class=\"bought\">";
+					html += "<tr id=\""+sortedItems[i].name+"\" class=\"bought\">";
 					active = " active";
 				}else{
-					html += "<tr id=\""+i+"\">";
+					html += "<tr id=\""+sortedItems[i].name+"\">";
 					active = "";
 				}
 				html += 
-							"<tr id=\""+i+"\">"+
 							"<td>"+sortedItems[i].name+"</td>"+
 							"<td>"+
 								"<div class=\"input-group\">"+
@@ -139,7 +138,13 @@ class App {
 	                                "</button>"+
                             	"</span>"+
 							"</td>"+
-							"<td>knapp2</td>"+
+							"<td>"+
+								"<span class=\"input-group-btn\">"+
+	                                "<button class=\"btn btn-default delete-item-icon\" type=\"button\">"+
+	                                    "<span class=\"glyphicon glyphicon-trash\"></span>"+
+	                                "</button>"+
+                            	"</span>"+
+							"</td>"+
 						"</tr>";
 
 			}
@@ -158,12 +163,20 @@ class App {
 		this.shoppingListCollection.editing = index;
 	}
 
-	add(index){
-		this.shoppingListCollection.shoppingLists[this.rowId].items[index].addQuantity();
+	add(name){
+		for(let i = 0; i<this.shoppingListCollection.shoppingLists[this.rowId].items.length; i++){
+			if(this.shoppingListCollection.shoppingLists[this.rowId].items[i].name === name){
+				this.shoppingListCollection.shoppingLists[this.rowId].items[i].addQuantity();
+			}
+		}
 	}
 
-	sub(index){
-		this.shoppingListCollection.shoppingLists[this.rowId].items[index].subQuantity();
+	sub(name){
+		for(let i = 0; i<this.shoppingListCollection.shoppingLists[this.rowId].items.length; i++){
+			if(this.shoppingListCollection.shoppingLists[this.rowId].items[i].name === name){
+				this.shoppingListCollection.shoppingLists[this.rowId].items[i].subQuantity();
+			}
+		}
 	}
 
 	sortName() {
@@ -191,7 +204,15 @@ class App {
 		this.printItemList();
 	}
 
-	bought(index){
-		this.shoppingListCollection.shoppingLists[this.rowId].items[index].toggleBought();
+	bought(name){
+		for(let i = 0; i<this.shoppingListCollection.shoppingLists[this.rowId].items.length; i++){
+			if(this.shoppingListCollection.shoppingLists[this.rowId].items[i].name === name){
+				this.shoppingListCollection.shoppingLists[this.rowId].items[i].toggleBought();
+			}
+		}
+	}
+
+	deleteItem(name){
+		this.shoppingListCollection.shoppingLists[this.rowId].removeItem(name);
 	}
 }
