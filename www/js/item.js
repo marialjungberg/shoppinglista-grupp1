@@ -60,6 +60,10 @@ class Item {
 		this.quantity--;
 	}
 
+	toggleBought() {
+		this.bought = !this.bought;
+	}
+
 }
 
 if(typeof module !== "undefined"){
