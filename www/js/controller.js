@@ -20,6 +20,9 @@ $(function(){
 	$(".delete-list").click(function(){
 		app.deleteList(this.id);
 	});
+	$(".delete-item").click(function(){
+		app.deleteItem(this.id);
+	});
 	$(".edit-list").click(function(){
 		app.editList(this.id);
 	});
@@ -58,8 +61,8 @@ $(document).ready(function () {
     		app.bought(name);
     		app.printItemList();
     	}else if(e.target.className==="btn btn-default delete-item-icon" || e.target.className==="glyphicon glyphicon-trash"){
-    		app.deleteItem(name);
-    		app.printItemList();
+    		$(".delete-item").attr('id', name);
+    		$("#confirm-delete-item").modal();
     	}
     });
 });
@@ -70,7 +73,7 @@ $(document).ready(function () {
     	let $tr = $(e.target).closest('tr');
 	    rowId = ($tr).attr("id");
 
-    	if(e.target.className==="delete-list"){
+    	if(e.target.className==="glyphicon glyphicon-trash" || e.target.className==="btn btn-default delete-list"){
     		$(".delete-list").attr('id', rowId);
     		$("#confirm-delete-list").modal();
     	}else{
