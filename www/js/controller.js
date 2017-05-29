@@ -30,7 +30,7 @@ $(document).ready(function () {
     	}else if(e.target.className==="decrease-number btn btn-default"){
     		app.sub(rowId);
 			app.printItemList();
-    	}else if(e.target.className==="bought-icon"){
+    	}else if(e.target.className==="btn btn-default bought-icon" || e.target.className==="btn btn-default bought-icon active"){
     		app.bought(rowId);
     		app.printItemList();
     	}
