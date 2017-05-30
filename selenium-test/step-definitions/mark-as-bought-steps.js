@@ -78,10 +78,10 @@ module.exports = function () {
 	this.Then(/^the row should be marked as unbought with a blue background$/, async function() {
   		let boughtIcons = await driver.findElements(by.css('.bought-icon'));
 		for(boughtIcon of boughtIcons) {
-		let classes = await boughtIcon.getAttribute("class");
-		if (classes.indexOf("active")<0){		
-		await driver.sleep(5000);
-		return;  //lyckat
+			let classes = await boughtIcon.getAttribute("class");
+			if (classes.indexOf("active")<0){		
+				await driver.sleep(5000);
+				return;  //lyckat
 			}
 		}
 		assert(true, "item unbought as mark");
