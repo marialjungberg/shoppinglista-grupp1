@@ -4,7 +4,7 @@ Feature:  Change the list name
 	so I can organize my lists.
  
 	Scenario: Change the name of my list
-		Given that I have created a shoppinglist
+		Given that I have created a shopping list
 		And clicked the pen button
 		When I fill in the new name
 		And click the OK button	
