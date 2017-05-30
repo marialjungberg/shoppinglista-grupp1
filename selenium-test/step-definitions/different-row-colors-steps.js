@@ -14,7 +14,7 @@ module.exports = function () {
 	});
 
 	this.When(/^I look at the list$/, async function() {
-
+		
 	});
        
     this.Then(/^every second row should be in a different color$/, async function() {
