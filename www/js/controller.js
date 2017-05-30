@@ -19,7 +19,7 @@ $(function(){
 	$(".delete-list-modal").click(function(){
 		app.deleteList(this.id);
 	});
-	$(".delete-item").click(function(){
+	$(".delete-item-modal").click(function(){
 		app.deleteItem(this.id);
 	});
 	$(".edit-list-modal").click(function(){
