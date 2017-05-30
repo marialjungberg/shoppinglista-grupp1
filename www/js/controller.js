@@ -16,7 +16,7 @@ $(function(){
 		}
 	});
 
-	$(".delete-list").click(function(){
+	$(".delete-list-modal").click(function(){
 		app.deleteList(this.id);
 	});
 	$(".delete-item").click(function(){
@@ -63,7 +63,7 @@ $(document).ready(function () {
     		app.bought(name);
     		app.printItemList();
     	}else if(e.target.className==="btn btn-default delete-item-icon" || e.target.className==="glyphicon glyphicon-trash"){
-    		$(".delete-item").attr('id', name);
+    		$(".delete-item-modal").attr('id', name);
     		$("#confirm-delete-item").modal();
     	}
     });
@@ -76,7 +76,7 @@ $(document).ready(function () {
 	    rowId = ($tr).attr("id");
 
     	if(e.target.className==="glyphicon glyphicon-trash" || e.target.className==="btn btn-default delete-list"){
-    		$(".delete-list").attr('id', rowId);
+    		$(".delete-list-modal").attr('id', rowId);
     		$("#confirm-delete-list").modal();
     	}else if(e.target.className==="glyphicon glyphicon-pencil" || e.target.className==="btn btn-default edit-list"){
     		$(".edit-list").attr('id', rowId);
