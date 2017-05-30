@@ -25,7 +25,6 @@ module.exports = function () {
 			if(text === 'New name'){ found = true; break; };
 		};
 		assert(found,"Could not find a list with the correct name.");
-		await driver.sleep(3000);
 	});
 
 };
