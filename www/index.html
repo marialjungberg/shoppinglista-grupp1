@@ -44,22 +44,23 @@
                 </div>
             
                 <div class="row add-new">
-                    <div class="col-xs-12">
-                        <div class="col-sm-7" position="center">
-                            <h5>Ny shoppinglista</h5>
-                            <div class="input-group">
-                                <input type="text" class="form-control" id="new-shoppinglist-name">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-default create-shoppinglist-btn" type="button">
-                                        <span class="glyphicon glyphicon-plus"></span>
-                                        <div class="col-xs-5">
-                                    </button>
-                                </span>
-                            </div>                
-                        </div>
+                <div class="col-xs-12">
+               
+                    <div class="col-sm-4" position="center">
+                        <h5>Ny shoppinglista</h5>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="new-shoppinglist-name">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default create-shoppinglist-btn" type="button">
+                                    <span class="glyphicon glyphicon-plus"></span>
+                                    <div class="col-xs-5">
+                                </button>
+                            </span>
+                        </div>                
                     </div>
                 </div>
-              </div>
+            </div>
+          </div>
           </div>
 
             <!-- END Shoppinglist view -->
@@ -91,7 +92,7 @@
 
 
                         <div class="btn-group">
-                            <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                            <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="true" id="sort-dropdown">
                             Sortera
                                 <span class="caret"></span>
                             </a>
@@ -103,7 +104,7 @@
 
                         <!-- dropdown, filter -->
                         <div class="btn-group">
-                            <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                            <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="true" id="filter-dropdown">
                             Filtrera
                                 <span class="caret"></span>
                             </a>
@@ -197,7 +198,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Avbryt</button>
-                            <button type="button" class="btn btn-default edit-list" data-dismiss="modal">Bekräfta</a>
+                            <button type="button" class="btn btn-default edit-list-modal" data-dismiss="modal">Bekräfta</a>
                         </div>
                     </div>
                 </div>
@@ -213,7 +214,7 @@
                             <h4 class="modal-title">Varning!</h4>
                         </div>
                         <div class="modal-body">
-                            <p>Är du säker på att du vill ta bort varan?</p>
+                            <p>Är du säker på att du vill ta bort listan?</p>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Avbryt</button>
