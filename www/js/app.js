@@ -6,7 +6,7 @@ class App {
 		this.shoppingListCollection = new ShoppingListCollection();
 		this.rowId = -1;
 		this.filter = "none";
-		this.sort = "name";
+		this.sort = "none";
 	}
 
 	createShoppingList() {
