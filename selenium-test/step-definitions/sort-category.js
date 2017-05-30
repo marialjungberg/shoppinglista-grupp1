@@ -20,7 +20,7 @@ this.Given(/^that I’m viewing a shopping list with two or more items that is n
 		await driver.findElement(by.css("#new-item-category")).click();
 		await driver.findElement(by.css(".bageri")).click();
 
-
+});
 this.When(/^I choose to sort the shopping list by category on the sort dropdown$/, async function() {
 });
 

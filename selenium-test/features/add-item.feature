@@ -12,7 +12,7 @@ Feature: Remove an item
 	Scenario: Add an item from the shopping list
 		Given that I am viewing a shopping list
 		When I fill in name, quantity, unit and category
-		And click the “+” button
+		And click the plus button
 		Then the item should be added to the shopping list
 
 	Scenario: Adding an item with the same name

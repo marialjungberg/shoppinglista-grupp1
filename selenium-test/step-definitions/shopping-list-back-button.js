@@ -5,11 +5,13 @@ function sleep(ms){
     },ms);
   });
 }
+	let Pages = require("../helper-class/load-pages.class.js");
 
 module.exports = function () {
 	this.Given(/^that I’m viewing a shopping list$/, async function() {
-		await helpers.loadPage('http://localhost:3000#list');
-		await sleep(1000);
+	let pages = new Pages(helpers,driver,by);
+		await pages.oneList();
+		await driver.findElement(by.css("#collection-list")).click();
 	});
 
 	this.When(/^I click the back button$/, async function() {
