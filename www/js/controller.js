@@ -16,7 +16,6 @@ $(function(){
 		}
 	});
 
-
 	$(".delete-list").click(function(){
 		app.deleteList(this.id);
 	});
@@ -79,7 +78,7 @@ $(document).ready(function () {
     	if(e.target.className==="glyphicon glyphicon-trash" || e.target.className==="btn btn-default delete-list"){
     		$(".delete-list").attr('id', rowId);
     		$("#confirm-delete-list").modal();
-    	}else if(e.target.className==="edit-list"){
+    	}else if(e.target.className==="glyphicon glyphicon-pencil" || e.target.className==="btn btn-default edit-list"){
     		$(".edit-list").attr('id', rowId);
     		$("#edit-list-name").modal();
     	}else{
