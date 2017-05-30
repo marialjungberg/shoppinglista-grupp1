@@ -3,7 +3,8 @@ Feature: A user should be able to get a list of unbought items in a grocery list
 	so I know what I haven’t bought yet.
  
 	Scenario: A user should be able to get a list of unbought items
-		Given that I’m viewing a shopping list with items that are both bought and not bought
+		Given that I’m viewing a shopping list
+		And that list has items that are both bought and not bought
 		When I choose to filter the shopping list by not bought on the filter dropdown
 		Then the list should only contain the items marked not bought
  
