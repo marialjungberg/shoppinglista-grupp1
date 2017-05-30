@@ -11,9 +11,14 @@ class App {
 
 	createShoppingList() {
 		let shoppingListName = $("#new-shoppinglist-name").val();
-		let shoppingList = new ShoppingList(shoppingListName);
-		this.shoppingListCollection.addShoppingList(shoppingList);
-		this.printShoppingLists();
+
+		try{
+			let shoppingList = new ShoppingList(shoppingListName);
+			this.shoppingListCollection.addShoppingList(shoppingList);
+			this.printShoppingLists();
+		}catch (err){
+			alert(err);
+		}
 	}
 
 	createItem() {
