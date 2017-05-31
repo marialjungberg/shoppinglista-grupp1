@@ -5,6 +5,7 @@ function sleep(ms){
     },ms);
   });
 }
+	let Pages = require("../helper-class/load-pages.class.js");
 
 module.exports = function () {
 	this.Given(/^that I Am viewing a shopping list$/, async function() {
@@ -12,7 +13,6 @@ module.exports = function () {
 
 		await driver.findElement(by.css("#new-shoppinglist-name")).sendKeys("Mina matvaror");
 		await driver.findElement(by.css(".create-shoppinglist-btn")).click();
-
 		await driver.findElement(by.css("#collection-list")).click();
 	});
 

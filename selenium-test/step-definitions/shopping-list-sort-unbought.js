@@ -29,7 +29,7 @@ module.exports = function () {
 		await driver.findElement(by.css(".bought-icon")).click();
 
 		await sleep(1000);
-	})
+	});
 
 	this.When(/^I choose to filter the shopping list by not bought on the filter dropdown$/, async function() {
 		await driver.findElement(by.css("#filter-dropdown")).click();
