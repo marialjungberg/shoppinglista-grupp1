@@ -32,7 +32,8 @@ this.Given(/^that I’m viewing a shopping list with two or more items that is n
 						await driver.findElement(by.css("#new-item-category")).click();
 						await driver.findElement(by.css("#bageri")).click();
 						await driver.findElement(by.css(".create-item-btn")).click();
-						
+
+});
 
 		this.When(/^I choose to sort the shopping list by category on the sort dropdown$/, async function() {
 		
@@ -52,7 +53,6 @@ this.Then(/^the list should be sorted by category$/, async function() {
 		let categories = [];
 		for(td of categoryTds) {
 			let text = await td.getText();
-			console.log(text);
 			categories.push(text);
 		}
 
