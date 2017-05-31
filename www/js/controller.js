@@ -15,19 +15,41 @@ $(function(){
 			createItem();
 		}
 	});
+	
+	$(document).on("keyup","#item-quantity",function(e){
+		if(e.which === 13){
+			let val = $(this).val().replace(/,/,".")/1;
+			if(isNaN(val) || val <= 0){
+				$(this).val("");
+				return;
+			}
+			let $tr = $(e.target).closest('tr');
+	    	name = ($tr).attr("id");
+			app.editQuantity(name, val);
+		}
+	});
+
+	$(document).on("keypress","#item-quantity",function(e){
+		let char = String.fromCharCode(e.charCode);
+		if("0123456789".indexOf(char)<0){
+			let numberOfDecimalSeparators = $(this).val().split(".").length-1 + $(this).val().split(",").length-1;
+			if(numberOfDecimalSeparators === 0 && (char === "." || char === ",")){return;}
+			e.preventDefault();
+		}
+	});
 
 	$(".delete-list-modal").click(function(){
 		app.deleteList(this.id);
 	});
+
 	$(".delete-item-modal").click(function(){
 		app.deleteItem(this.id);
 	});
+
 	$(".edit-list-modal").click(function(){
 		app.editList(this.id);
 	});
-	/*$(".confirm-edit-list").click(function(){
-		app.editList(this.id);
-	});*/
+
 	$(".increase-add-number").click(function(e){
 		let previous = $("#item-add-quantity").val();
 		previous++;
