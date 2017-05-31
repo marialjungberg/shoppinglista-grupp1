@@ -33,7 +33,5 @@ module.exports = function () {
 			};
 		};
 		assert(found,"Did not return to start-page.");
-
-		await sleep(1000);
 	});
 }
