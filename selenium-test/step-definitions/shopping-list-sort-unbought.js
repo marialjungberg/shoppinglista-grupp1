@@ -28,19 +28,25 @@ module.exports = function () {
 
 		await driver.findElement(by.css(".bought-icon")).click();
 
-		await sleep(1000);
+		//await sleep(1000);
 	});
 
 	this.When(/^I choose to filter the shopping list by not bought on the filter dropdown$/, async function() {
 		await driver.findElement(by.css("#filter-dropdown")).click();
 		await driver.findElement(by.css(".filter-unboughts-button").click());
         
-		await sleep(1000);
+		//await sleep(1000);
 	});
 
 	this.Then(/^the list should only contain the items marked not bought$/, async function() {
-		await driver.findElement(by.css("#collection-list"));
+		//await driver.findElement(by.css("#collection-list"));
+		let boughtIcons = await driver.findElements(by.css('.bought-icon'));
+		for(boughtIcon of boughtIcons) {
+			let classes = await boughtIcon.getAttribute("class");
+			await driver.sleep(2000);
+			assert(classes.indexOf("active")>0, "list contain not bought items");
+		}
 
-		await sleep(1000);
+		//await sleep(1000);
 	});
 }
