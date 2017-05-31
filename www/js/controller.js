@@ -73,8 +73,7 @@ $(document).ready(function () {
     $(document).delegate("#collection-list tbody", "click", function (e) {
 
     	let $tr = $(e.target).closest('tr');
-	    rowId = ($tr).attr("id");
-
+	    let rowId = ($tr).attr("id");
     	if(e.target.className==="glyphicon glyphicon-trash" || e.target.className==="btn btn-default delete-list"){
     		$(".delete-list-modal").attr('id', rowId);
     		$("#confirm-delete-list").modal();
@@ -88,7 +87,7 @@ $(document).ready(function () {
 });
 
 function rowClick(row){
-	app.rowId = rowId;
+	app.rowId = row;
 	app.printItemList();
 	app.setListName();
 	location.hash = "#list";   

@@ -13,7 +13,7 @@ module.exports = function () {
 
 		await driver.findElement(by.css("#new-shoppinglist-name")).sendKeys("Mina matvaror");
 		await driver.findElement(by.css(".create-shoppinglist-btn")).click();
-		await driver.findElement(by.css("#collection-list")).click();
+		await driver.findElement(by.css("#collection-list tbody tr td:first-child")).click();
 	});
 
 	this.When(/^I click the back button$/, async function() {
