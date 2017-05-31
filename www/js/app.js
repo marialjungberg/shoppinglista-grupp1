@@ -125,7 +125,7 @@ class App {
 									"<span class=\"input-group-btn\">"+
                                     	"<input class=\"decrease-number btn btn-default\" type=\"button\" value=\"-\">"+
                                     "</span>"+
-                                    "<input class=\"form-control\" id=\"item-quantity\" type=\"text\" value=\""+sortedItems[i].quantity+"\" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>"+
+                                    "<input class=\"form-control\" id=\"item-quantity\" type=\"text\" value=\""+sortedItems[i].quantity+"\">"+
                                     "<span class=\"input-group-btn\">"+
                                     	"<input class=\"increase-number btn btn-default\" type=\"button\" value=\"+\">"+
                                     "</span>"+
@@ -219,6 +219,15 @@ class App {
 
 	deleteItem(name){
 		this.shoppingListCollection.shoppingLists[this.rowId].removeItem(name);
+		this.printItemList();
+	}
+
+	editQuantity(name, newVal){
+		for(let i = 0; i<this.shoppingListCollection.shoppingLists[this.rowId].items.length; i++){
+			if(this.shoppingListCollection.shoppingLists[this.rowId].items[i].name === name){
+				this.shoppingListCollection.shoppingLists[this.rowId].items[i].quantity = newVal;
+			}
+		}
 		this.printItemList();
 	}
 }
