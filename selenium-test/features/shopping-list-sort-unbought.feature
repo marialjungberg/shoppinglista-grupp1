@@ -9,6 +9,7 @@ Feature: A user should be able to get a list of unbought items in a grocery list
 		Then the list should only contain the items marked not bought
  
 	Scenario: A user should get an empty list if there are no unbought items
-		Given that I’m viewing a grocery list with only bought items in it
+		Given that I Am viewing a shopping list
+		And that list has only bought items in it
 		When I choose to filter the shopping list by not bought on the filter dropdown
 		Then the list should be empty
