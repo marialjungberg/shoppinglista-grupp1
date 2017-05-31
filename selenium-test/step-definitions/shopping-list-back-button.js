@@ -5,11 +5,15 @@ function sleep(ms){
     },ms);
   });
 }
+	let Pages = require("../helper-class/load-pages.class.js");
 
 module.exports = function () {
-	this.Given(/^that I’m viewing a shopping list$/, async function() {
-		await helpers.loadPage('http://localhost:3000#list');
-		await sleep(1000);
+	this.Given(/^that I Am viewing a shopping list$/, async function() {
+		await helpers.loadPage('http://localhost:3000');
+
+		await driver.findElement(by.css("#new-shoppinglist-name")).sendKeys("Mina matvaror");
+		await driver.findElement(by.css(".create-shoppinglist-btn")).click();
+		await driver.findElement(by.css("#collection-list")).click();
 	});
 
 	this.When(/^I click the back button$/, async function() {
@@ -19,7 +23,16 @@ module.exports = function () {
 
 	this.Then(/^the shopping lists collection page should be visible$/, async function() {
 		//await driver.wait(until.urlls("http://localhost:3000#start"));
-		await driver.findElement(by.css("#collection-list"));
+		let trs = await driver.findElements(by.css("#collection-list tr"));
+		let found = false;
+		for(tr of trs){
+			let text = await tr.getText();
+			if(text === 'Mina matvaror'){ 
+				found = true; 
+				break; 
+			};
+		};
+		assert(found,"Did not return to start-page.");
 
 		await sleep(1000);
 	});

@@ -13,9 +13,10 @@ module.exports = function () {
 	 }); 
 
 	this.Then(/^click the OK button in the modal$/, async function() {
-		let el = await driver.findElement(by.css(".delete-item"));         
+		let el = await driver.findElement(by.css(".delete-item-modal"));         
 		await driver.wait(until.elementIsVisible(el, 3000));
-		await driver.findElement(by.css(".delete-item")).click();
+		await driver.findElement(by.css(".delete-item-modal")).click();
+		await driver.sleep(3000);
 	});
 	                       
 	this.Then(/^the item should be removed from the shopping list$/, async function() {
@@ -29,21 +30,28 @@ module.exports = function () {
 	});
  
 
-this.Given(/^that I am viewing a shopping list$/, async function() {
-	await helpers.loadPage('http://localhost:3000');
+	this.Given(/^that I am viewing a shopping list$/, async function() {
+	
+	let pages = new Pages(helpers,driver,by);
+		await pages.oneList();
+		await driver.findElement(by.css("#collection-list")).click();
 	});
                         
  
 
-this.When(/^I fill in name, quantity, unit and category$/, function() {
-    //await driver.findElement(by.css("#new-item-name")).sendKeys("ny vara");
+this.When(/^I fill in name, quantity, unit and category$/, async function() {
+    await driver.findElement(by.css("#new-item-name")).sendKeys("ny vara");
+    await driver.findElement(by.css("#item-add-quantity")).sendKeys("1");
+    await driver.findElement(by.css("#new-item-category")).click();
+    await driver.findElement(by.css("#mejeri")).click();
+    
 
 	});
                         
  
-
-this.Then(/^click the “+” button$/, function() {
-  
+this.Then(/^click the plus button$/, async function() {
+  await driver.findElement(by.css(".create-item-btn")).click();
+  await driver.sleep(3000);
 });
                         
  

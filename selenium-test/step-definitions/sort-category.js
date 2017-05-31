@@ -33,6 +33,11 @@ this.Given(/^that I’m viewing a shopping list with two or more items that is n
 						await driver.findElement(by.css("#bageri")).click();
 						await driver.findElement(by.css(".create-item-btn")).click();
 
+<<<<<<< HEAD
+=======
+});
+this.When(/^I choose to sort the shopping list by category on the sort dropdown$/, async function() {
+>>>>>>> 912bb668f09f5b527bb193cafec944a0988ec926
 });
 
 		this.When(/^I choose to sort the shopping list by category on the sort dropdown$/, async function() {
