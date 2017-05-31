@@ -27,17 +27,15 @@ module.exports = function () {
 	});
 
     this.Then(/^the list should be sorted by name$/, async function() {
-  		let trs = await driver.findElements(by.css('#item-list tbody tr'));
-  		let count = 0;
-		for(tr of trs) {
-			if((count%2)==0 || await tr.getText()!=""){
-				let text = await tr.getText();
-				console.log(text);
-				count++;
-			}else if(await tr.getText()!=""){
-				count++;
-			}
+  		let nameTds = await driver.findElements(by.css('#item-list tbody tr td:first-child'));
+		let names = [];
+		for(td of nameTds) {
+			let text = await td.getText();
+			names.push(text);
 		}
-		await driver.sleep(3000);
+
+		// Make a copy of names (will be a new array) and sort it
+		let sortedNames = names.slice().sort();
+		assert.deepEqual(names,sortedNames);
 	});
 };
