@@ -16,8 +16,8 @@ Feature: Remove an item
 		Then the item should be added to the shopping list
 
 	Scenario: Adding an item with the same name
-		Given that I am viewing a shopping list
+		Given that I am viewing a shopping list with one or more items
 		When I fill in a name that already exists in the shopping list
-		And click the “+” button
+		And click the plus button
 		Then it should not be added to the shopping list
 		And an error message is shown

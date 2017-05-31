@@ -16,7 +16,6 @@ module.exports = function () {
 		let el = await driver.findElement(by.css(".delete-item-modal"));         
 		await driver.wait(until.elementIsVisible(el, 3000));
 		await driver.findElement(by.css(".delete-item-modal")).click();
-		await driver.sleep(3000);
 	});
 	                       
 	this.Then(/^the item should be removed from the shopping list$/, async function() {
@@ -51,14 +50,53 @@ this.When(/^I fill in name, quantity, unit and category$/, async function() {
  
 this.Then(/^click the plus button$/, async function() {
   await driver.findElement(by.css(".create-item-btn")).click();
-  await driver.sleep(3000);
 });
                         
  
 
-this.Then(/^the item should be added to the shopping list$/, function() {
+this.Then(/^the item should be added to the shopping list$/, async function() {
+	let trs = await driver.findElements(by.css('#item-list tbody tr td:first-child'));
+	let found=false;
+	   for(let tr of trs){
+	     let text = await tr.getText();
+	     
+	     if(text ==="ny vara"){
+	     	
+	     	found=true;
+	     	break;
+	     }
+	   }
+	   assert(found,"item is not added");
+
+	
   
 });
                         
+ 
 
+this.Given(/^I fill in a name that already exists in the shopping list$/, async function() {
+	
+	let trs = await driver.findElements(by.css('#item-list tbody tr td:first-child'));
+	let found = false;
+	   for(let tr of trs){
+	     let text = await tr.getText();
+	     
+	     if(text ==="Bananer"){
+	     	
+	     	found=true;
+	     	break;
+	     }
+	   }
+	   assert(found,"item is not added");
+  	await driver.findElement(by.css("#new-item-name")).sendKeys("Bananer");
+  	
+});
+                       
+                        
+ 
+
+this.Then(/^it should not be added to the shopping list$/, async function() {
+  await driver.sleep (3000);
+});
+                        
 };
