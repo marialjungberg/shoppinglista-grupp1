@@ -7,7 +7,7 @@ function sleep(ms){
 }
 
 module.exports = function () {
-	this.Given(/^that I’m viewing a shopping list$/, async function() {
+	/*this.Given(/^that I’m viewing a shopping list$/, async function() {
 		await helpers.loadPage('http://localhost:3000#start');
 
 		await driver.findElement(by.css("#new-shoppinglist-name")).sendKeys("Mina matvaror");
@@ -16,7 +16,7 @@ module.exports = function () {
 		await driver.findElement(by.css("#collection-list")).click();
 
 		await sleep(1000);
-	});
+	});*/
 
 	this.Given(/^that list has items that are both bought and not bought$/, async function() {
 		await driver.findElement(by.css("#new-item-name")).sendKeys("Potatis");
@@ -26,13 +26,14 @@ module.exports = function () {
 		await driver.findElement(by.css("#new-item-name")).sendKeys("Godis");
 		await driver.findElement(by.css(".create-item-btn")).click();
 
-		
-		await driver.findElement(by.css(".filter-unboughts-button").click());
+		await driver.findElement(by.css(".bought-icon")).click();
 
 		await sleep(1000);
-	}
+	})
 
 	this.When(/^I choose to filter the shopping list by not bought on the filter dropdown$/, async function() {
+		await driver.findElement(by.css("#filter-dropdown")).click();
+		await driver.findElement(by.css(".filter-unboughts-button").click());
         
 		await sleep(1000);
 	});
